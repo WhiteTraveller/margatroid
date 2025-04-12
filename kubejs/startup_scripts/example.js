@@ -4,22 +4,38 @@ const $ServerPlayer = Java.loadClass("net.minecraft.server.level.ServerPlayer")
 
 ForgeEvents.onEvent($EntityTravelToDimensionEvent, event => {
     global.eventTest(event);
-})
+});
 
-global.eventTest = event =>{
+global.mobSpawner = function (entity) {
+}
+
+StartupEvents.registry("block", (event) => {
+    //event.create(方块id, 方块类型)
+    event.create("meng:my_block")
+        .woodSoundType()
+        .unbreakable()
+        .displayName("柜台")
+        .blockEntity((entityInfo) => {
+            entityInfo.serverTick(1, 0, (entity) => {
+                global.mobSpawner(entity);
+            })
+        });
+});
+
+global.eventTest = event => {
     let player = event.entity;
-    try{
+    try {
         let resourceKey = event.dimension;
-        if (player instanceof $ServerPlayer){
+        if (player instanceof $ServerPlayer) {
             if (resourceKey.getPath() == "dungeon_dimension") {
                 let count = player.inventory.count();
-                    if(player.nbt["Dimension"] != "dimdungeons:dungeon_dimension"){
-                    if(count > 0 && player.nbt["Dimension"] != "dimdungeons:dungeon_dimension"){
+                if (player.nbt["Dimension"] != "dimdungeons:dungeon_dimension") {
+                    if (count > 0 && player.nbt["Dimension"] != "dimdungeons:dungeon_dimension") {
                         let player = event.entity;
                         event.setCanceled(true);
-                        player.tell("你不能去这个维度,因为你身上有物品"); 
+                        player.tell("你不能去这个维度,因为你身上有物品");
                     }
-                    else{
+                    else {
                         player.modifyAttribute('minecraft:generic.max_health', 'health_reduction', -14, 'addition')
                         player.health = 6;
                         player.runCommandSilent(`title @s title "你感觉浑身无力"`);
@@ -29,15 +45,15 @@ global.eventTest = event =>{
             }
 
             if (player.nbt["Dimension"] == "dimdungeons:dungeon_dimension") {
-                if(resourceKey.getPath() != "dungeon_dimension"){
+                if (resourceKey.getPath() != "dungeon_dimension") {
                     player.inventory.clear();
-                    player.modifyAttribute('minecraft:generic.max_health', 'health_reduction', 0, 'addition')    
+                    player.modifyAttribute('minecraft:generic.max_health', 'health_reduction', 0, 'addition')
                 }
             }
 
         }
 
-    }catch (e) {
+    } catch (e) {
         player.tell("error" + e);
     }
 }

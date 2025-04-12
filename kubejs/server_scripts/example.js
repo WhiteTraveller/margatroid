@@ -1,5 +1,3 @@
-
-
 EntityEvents.death("player", (event) => {
     const { player } = event;
 
@@ -9,6 +7,18 @@ EntityEvents.death("player", (event) => {
     }
 
 });
+
+global.mobSpawner = function (entity) {
+    let level = entity.getLevel();
+    if (level.getDimension() == 'dimdungeons:dungeon_dimension') {
+        let merchant = level.createEntity('minecraft:zombie');
+        let pos = entity.getBlockPos();
+        // merchant.mergeNbt("{NoAI:1b,Invulnerable:1b,PersistenceRequired:1b}")
+        merchant.setPosition(pos.x + 0.5, pos.y + 1, pos.z + 0.5)
+        merchant.spawn();
+        entity.block.set("minecraft:air")
+    }
+}
 
 // const maxFloors = 15
 

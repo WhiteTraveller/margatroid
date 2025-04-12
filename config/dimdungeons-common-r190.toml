@@ -70,7 +70,7 @@
 
 #Settings for Theme 4
 [dungeonTheme4]
-	themeEntrances4 = [["dimdungeons:theme2_room00"]]
+	themeEntrances4 = [["test:test_room"]]
 	themeFourways4 = [["dimdungeons:roomair"]]
 	themeThreeways4 = [["dimdungeons:roomair"]]
 	themeHallways4 = [["dimdungeons:roomair"]]
