@@ -17,7 +17,18 @@ global.mobSpawner = function (entity) {
         merchant.setPosition(pos.x + 0.5, pos.y + 1, pos.z + 0.5)
         merchant.spawn();
         entity.block.set("minecraft:air")
+        
     }
+}
+
+global.chestSpawner = function (entity) {
+    let level = entity.getLevel()
+    let pos = entity.getBlockPos();
+    entity.block.set("minecraft:chest")
+    let block = level.getBlock(pos)
+    block.getEntity().deserializeNBT({"Items":[{"Count":"1b","Slot":"13b","id":"minecraft:stone"}]})
+    console.log(block.getEntity().serializeNBT())
+
 }
 
 // const maxFloors = 15

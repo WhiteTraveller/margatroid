@@ -9,15 +9,28 @@ ForgeEvents.onEvent($EntityTravelToDimensionEvent, event => {
 global.mobSpawner = function (entity) {
 }
 
+global.chestSpawner = function (entity) {
+}
+
 StartupEvents.registry("block", (event) => {
     //event.create(方块id, 方块类型)
     event.create("meng:my_block")
         .woodSoundType()
         .unbreakable()
-        .displayName("柜台")
+        .displayName("怪物生成器(测试)")
         .blockEntity((entityInfo) => {
             entityInfo.serverTick(1, 0, (entity) => {
                 global.mobSpawner(entity);
+            })
+        });
+
+    event.create("meng:test_chest_spawner")
+        .woodSoundType()
+        .unbreakable()
+        .displayName("宝箱生成器(测试)")
+        .blockEntity((entityInfo) => {
+            entityInfo.serverTick(1, 0, (entity) => {
+                global.chestSpawner(entity);
             })
         });
 });
