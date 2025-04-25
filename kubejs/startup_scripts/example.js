@@ -12,6 +12,12 @@ global.mobSpawner = function (entity) {
 global.chestSpawner = function (entity) {
 }
 
+global.dimensionDestory = function (entity) {
+}
+
+global.treasuraSpawner = function (entity) {
+}
+
 StartupEvents.registry("block", (event) => {
     //event.create(方块id, 方块类型)
     event.create("meng:my_block")
@@ -33,7 +39,31 @@ StartupEvents.registry("block", (event) => {
                 global.chestSpawner(entity);
             })
         });
+
+    event.create("meng:test_dimension_destroy")
+        .woodSoundType()
+        .unbreakable()
+        .displayName("传送门破坏器")
+        .blockEntity((entityInfo) => {
+            entityInfo.serverTick(1, 0, (entity) => {
+                global.dimensionDestory(entity);
+            })
+        });
+    
+    event.create("meng:test_treasure_spanwer")
+        .woodSoundType()
+        .unbreakable()
+        .displayName("刷怪奖励生成器")
+        .blockEntity((entityInfo) => {
+            entityInfo.serverTick(1, 0, (entity) => {
+                global.treasuraSpawner(entity);
+            })
+        });
 });
+
+StartupEvents.registry("item", event => {
+    event.create("test:dream_matter", "basic")
+})
 
 global.eventTest = event => {
     let player = event.entity;

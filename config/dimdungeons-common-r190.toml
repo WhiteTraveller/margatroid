@@ -27,7 +27,7 @@
 	basicEnemyHealthScaling = 1.0
 	advancedEnemyHealthScaling = 2.0
 	#The number of themes to expect in the common config.
-	numberOfThemes = 4
+	numberOfThemes = 11
 
 #Settings for Theme 1
 [dungeonTheme1]
@@ -83,94 +83,94 @@
 
 #Settings for Theme 5
 [dungeonTheme5]
-	themeEntrances5 = []
-	themeFourways5 = []
-	themeThreeways5 = []
-	themeHallways5 = []
-	themeCorners5 = []
-	themeEnds5 = []
+	themeEntrances5 = [["test:test_entrance_l1"]]
+	themeFourways5 = [["test:test_fourway"]]
+	themeThreeways5 = [["test:test_threeway"]]
+	themeHallways5 = [["test:test_hallway"]]
+	themeCorners5 = [["test:test_corner"]]
+	themeEnds5 = [["test:test_deadend"]]
 	themeEnemySet1_5 = ["minecraft:zombie", "minecraft:husk", "minecraft:drowned", "minecraft:spider"]
 	themeEnemySet2_5 = ["minecraft:wither_skeleton", "minecraft:stray", "minecraft:skeleton", "minecraft:pillager"]
 	themeEnemyHealthScaling5 = 1.0
-	themeDungeonSize5 = 14
+	themeDungeonSize5 = 20
 
 #Settings for Theme 6
 [dungeonTheme6]
-	themeEntrances6 = []
-	themeFourways6 = []
-	themeThreeways6 = []
-	themeHallways6 = []
-	themeCorners6 = []
-	themeEnds6 = []
+	themeEntrances6 = [["test:test_entrance_l2"]]
+	themeFourways6 = [["test:test_fourway"]]
+	themeThreeways6 = [["test:test_threeway"]]
+	themeHallways6 = [["test:test_hallway"]]
+	themeCorners6 = [["test:test_corner"]]
+	themeEnds6 = [["test:test_deadend"]]
 	themeEnemySet1_6 = ["minecraft:zombie", "minecraft:husk", "minecraft:drowned", "minecraft:spider"]
 	themeEnemySet2_6 = ["minecraft:wither_skeleton", "minecraft:stray", "minecraft:skeleton", "minecraft:pillager"]
 	themeEnemyHealthScaling6 = 1.0
-	themeDungeonSize6 = 14
+	themeDungeonSize6 = 20
 
 #Settings for Theme 7
 [dungeonTheme7]
-	themeEntrances7 = []
-	themeFourways7 = []
-	themeThreeways7 = []
-	themeHallways7 = []
-	themeCorners7 = []
-	themeEnds7 = []
+	themeEntrances7 = [["test:test_entrance_l3"]]
+	themeFourways7 = [["test:test_fourway"]]
+	themeThreeways7 = [["test:test_threeway"]]
+	themeHallways7 = [["test:test_hallway"]]
+	themeCorners7 = [["test:test_corner"]]
+	themeEnds7 = [["test:test_deadend"]]
 	themeEnemySet1_7 = ["minecraft:zombie", "minecraft:husk", "minecraft:drowned", "minecraft:spider"]
 	themeEnemySet2_7 = ["minecraft:wither_skeleton", "minecraft:stray", "minecraft:skeleton", "minecraft:pillager"]
 	themeEnemyHealthScaling7 = 1.0
-	themeDungeonSize7 = 14
+	themeDungeonSize7 = 20
 
 #Settings for Theme 8
 [dungeonTheme8]
-	themeEntrances8 = []
-	themeFourways8 = []
-	themeThreeways8 = []
-	themeHallways8 = []
-	themeCorners8 = []
-	themeEnds8 = []
+	themeEntrances8 = [["test:test_entrance_l4"]]
+	themeFourways8 = [["test:test_fourway"]]
+	themeThreeways8 = [["test:test_threeway"]]
+	themeHallways8 = [["test:test_hallway"]]
+	themeCorners8 = [["test:test_corner"]]
+	themeEnds8 = [["test:test_deadend"]]
 	themeEnemySet1_8 = ["minecraft:zombie", "minecraft:husk", "minecraft:drowned", "minecraft:spider"]
 	themeEnemySet2_8 = ["minecraft:wither_skeleton", "minecraft:stray", "minecraft:skeleton", "minecraft:pillager"]
 	themeEnemyHealthScaling8 = 1.0
-	themeDungeonSize8 = 14
+	themeDungeonSize8 = 20
 
 #Settings for Theme 9
 [dungeonTheme9]
-	themeEntrances9 = []
-	themeFourways9 = []
-	themeThreeways9 = []
-	themeHallways9 = []
-	themeCorners9 = []
-	themeEnds9 = []
+	themeEntrances9 = [["test:test_entrance_l5"]]
+	themeFourways9 = [["test:test_fourway"]]
+	themeThreeways9 = [["test:test_threeway"]]
+	themeHallways9 = [["test:test_hallway"]]
+	themeCorners9 = [["test:test_corner"]]
+	themeEnds9 = [["test:test_deadend"]]
 	themeEnemySet1_9 = ["minecraft:zombie", "minecraft:husk", "minecraft:drowned", "minecraft:spider"]
 	themeEnemySet2_9 = ["minecraft:wither_skeleton", "minecraft:stray", "minecraft:skeleton", "minecraft:pillager"]
 	themeEnemyHealthScaling9 = 1.0
-	themeDungeonSize9 = 14
+	themeDungeonSize9 = 20
 
 #Settings for Theme 10
 [dungeonTheme10]
-	themeEntrances10 = []
-	themeFourways10 = []
-	themeThreeways10 = []
-	themeHallways10 = []
-	themeCorners10 = []
-	themeEnds10 = []
+	themeEntrances10 = [["test:test_entrance_l6"]]
+	themeFourways10 = [["test:test_fourway"]]
+	themeThreeways10 = [["test:test_threeway"]]
+	themeHallways10 = [["test:test_hallway"]]
+	themeCorners10 = [["test:test_corner"]]
+	themeEnds10 = [["test:test_deadend"]]
 	themeEnemySet1_10 = ["minecraft:zombie", "minecraft:husk", "minecraft:drowned", "minecraft:spider"]
 	themeEnemySet2_10 = ["minecraft:wither_skeleton", "minecraft:stray", "minecraft:skeleton", "minecraft:pillager"]
 	themeEnemyHealthScaling10 = 1.0
-	themeDungeonSize10 = 14
+	themeDungeonSize10 = 20
 
 #Settings for Theme 11
 [dungeonTheme11]
-	themeEntrances11 = []
+	themeEntrances11 = [["test:test_entrance_l6"]]
 	themeFourways11 = []
 	themeThreeways11 = []
-	themeHallways11 = []
-	themeCorners11 = []
-	themeEnds11 = []
+	themeHallways11 = [["test:test_hallway"]]
+	themeCorners11 = [["test:test_corner"]]
 	themeEnemySet1_11 = ["minecraft:zombie", "minecraft:husk", "minecraft:drowned", "minecraft:spider"]
 	themeEnemySet2_11 = ["minecraft:wither_skeleton", "minecraft:stray", "minecraft:skeleton", "minecraft:pillager"]
 	themeEnemyHealthScaling11 = 1.0
 	themeDungeonSize11 = 14
+	themeEnds11 = []
 
 #Settings for Theme 12
 [dungeonTheme12]
