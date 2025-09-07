@@ -19,57 +19,32 @@ Note: Even if no fields are listed above, some methods are still available as fi
 
 | Name | Parameters | Return type | Static? |
 | ---- | ---------- | ----------- | ------- |
+| printFeaturesForType | GenerationStep$Decoration, BiomeFilter, boolean |  | void | ✘ |
+| printFiltered | GenerationStep$Decoration, BiomeFilter |  | void | ✘ |
+| printFiltered |  |  | void | ✘ |
+| printFiltered | GenerationStep$Decoration |  | void | ✘ |
+| removeAllFeatures | BiomeFilter, GenerationStep$Decoration |  | void | ✘ |
+| removeAllFeatures | BiomeFilter |  | void | ✘ |
+| removeAllFeatures |  |  | void | ✘ |
 | removeFeatureById | BiomeFilter, GenerationStep$Decoration, ResourceLocation[] |  | void | ✘ |
 | removeFeatureById | GenerationStep$Decoration, ResourceLocation[] |  | void | ✘ |
-| removeAllFeatures |  |  | void | ✘ |
-| removeAllFeatures | BiomeFilter |  | void | ✘ |
-| removeAllFeatures | BiomeFilter, GenerationStep$Decoration |  | void | ✘ |
-| printFiltered |  |  | void | ✘ |
-| printFiltered | GenerationStep$Decoration, BiomeFilter |  | void | ✘ |
-| printFiltered | GenerationStep$Decoration |  | void | ✘ |
 | removeOres | Consumer<RemoveOresProperties> |  | void | ✘ |
-| printSpawns |  |  | void | ✘ |
-| printSpawns | MobCategory |  | void | ✘ |
-| printFeatures |  |  | void | ✘ |
-| printFeatures | GenerationStep$Decoration |  | void | ✘ |
 | printFeatures | GenerationStep$Decoration, BiomeFilter |  | void | ✘ |
-| removeSpawns | Consumer<RemoveSpawnsProperties> |  | void | ✘ |
+| printFeatures | GenerationStep$Decoration |  | void | ✘ |
+| printFeatures |  |  | void | ✘ |
+| printSpawns | MobCategory |  | void | ✘ |
+| printSpawns |  |  | void | ✘ |
 | removeAllSpawns |  |  | void | ✘ |
-| printFeaturesForType | GenerationStep$Decoration, BiomeFilter, boolean |  | void | ✘ |
-| success |  |  | Object | ✘ |
-| success | Object |  | Object | ✘ |
-| exit |  |  | Object | ✘ |
+| removeSpawns | Consumer<RemoveSpawnsProperties> |  | void | ✘ |
 | exit | Object |  | Object | ✘ |
+| exit |  |  | Object | ✘ |
 | cancel |  |  | Object | ✘ |
 | cancel | Object |  | Object | ✘ |
+| success | Object |  | Object | ✘ |
+| success |  |  | Object | ✘ |
 
 
 ### Documented members:
-
-- `Object success()`
-```
-Stops the event with default exit value. Execution will be stopped **immediately**.
-
-`success` denotes a `true` outcome.
-```
-
-- `Object success(Object var0)`
-
-  Parameters:
-  - var0: Object
-
-```
-Stops the event with the given exit value. Execution will be stopped **immediately**.
-
-`success` denotes a `true` outcome.
-```
-
-- `Object exit()`
-```
-Stops the event with default exit value. Execution will be stopped **immediately**.
-
-`exit` denotes a `default` outcome.
-```
 
 - `Object exit(Object var0)`
 
@@ -78,6 +53,13 @@ Stops the event with default exit value. Execution will be stopped **immediately
 
 ```
 Stops the event with the given exit value. Execution will be stopped **immediately**.
+
+`exit` denotes a `default` outcome.
+```
+
+- `Object exit()`
+```
+Stops the event with default exit value. Execution will be stopped **immediately**.
 
 `exit` denotes a `default` outcome.
 ```
@@ -98,6 +80,24 @@ Cancels the event with default exit value. Execution will be stopped **immediate
 Cancels the event with the given exit value. Execution will be stopped **immediately**.
 
 `cancel` denotes a `false` outcome.
+```
+
+- `Object success(Object var0)`
+
+  Parameters:
+  - var0: Object
+
+```
+Stops the event with the given exit value. Execution will be stopped **immediately**.
+
+`success` denotes a `true` outcome.
+```
+
+- `Object success()`
+```
+Stops the event with default exit value. Execution will be stopped **immediately**.
+
+`success` denotes a `true` outcome.
 ```
 
 

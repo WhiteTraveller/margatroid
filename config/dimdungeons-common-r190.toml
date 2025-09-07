@@ -70,7 +70,7 @@
 
 #Settings for Theme 4
 [dungeonTheme4]
-	themeEntrances4 = [["test:test_room"]]
+	themeEntrances4 = [["test:big_room"]]
 	themeFourways4 = [["dimdungeons:roomair"]]
 	themeThreeways4 = [["dimdungeons:roomair"]]
 	themeHallways4 = [["dimdungeons:roomair"]]
@@ -83,16 +83,16 @@
 
 #Settings for Theme 5
 [dungeonTheme5]
-	themeEntrances5 = [["test:test_entrance_l1"]]
-	themeFourways5 = [["test:test_fourway"]]
-	themeThreeways5 = [["test:test_threeway"]]
-	themeHallways5 = [["test:test_hallway"]]
-	themeCorners5 = [["test:test_corner"]]
-	themeEnds5 = [["test:test_deadend"]]
+	themeEntrances5 = [["room:l1_entrance"]]
+	themeFourways5 = [["room:l1_fourway_b"]]
+	themeThreeways5 = [["room:l1_threeway_b"]]
+	themeHallways5 = [["room:l1_hailway_b"]]
+	themeCorners5 = [["room:l1_corner_b"]]
+	themeEnds5 = [["room:l1_end_b"]]
 	themeEnemySet1_5 = ["minecraft:zombie", "minecraft:husk", "minecraft:drowned", "minecraft:spider"]
 	themeEnemySet2_5 = ["minecraft:wither_skeleton", "minecraft:stray", "minecraft:skeleton", "minecraft:pillager"]
 	themeEnemyHealthScaling5 = 1.0
-	themeDungeonSize5 = 20
+	themeDungeonSize5 = 15
 
 #Settings for Theme 6
 [dungeonTheme6]
@@ -105,7 +105,7 @@
 	themeEnemySet1_6 = ["minecraft:zombie", "minecraft:husk", "minecraft:drowned", "minecraft:spider"]
 	themeEnemySet2_6 = ["minecraft:wither_skeleton", "minecraft:stray", "minecraft:skeleton", "minecraft:pillager"]
 	themeEnemyHealthScaling6 = 1.0
-	themeDungeonSize6 = 20
+	themeDungeonSize6 = 15
 
 #Settings for Theme 7
 [dungeonTheme7]
@@ -118,7 +118,7 @@
 	themeEnemySet1_7 = ["minecraft:zombie", "minecraft:husk", "minecraft:drowned", "minecraft:spider"]
 	themeEnemySet2_7 = ["minecraft:wither_skeleton", "minecraft:stray", "minecraft:skeleton", "minecraft:pillager"]
 	themeEnemyHealthScaling7 = 1.0
-	themeDungeonSize7 = 20
+	themeDungeonSize7 = 15
 
 #Settings for Theme 8
 [dungeonTheme8]
@@ -131,7 +131,7 @@
 	themeEnemySet1_8 = ["minecraft:zombie", "minecraft:husk", "minecraft:drowned", "minecraft:spider"]
 	themeEnemySet2_8 = ["minecraft:wither_skeleton", "minecraft:stray", "minecraft:skeleton", "minecraft:pillager"]
 	themeEnemyHealthScaling8 = 1.0
-	themeDungeonSize8 = 20
+	themeDungeonSize8 = 15
 
 #Settings for Theme 9
 [dungeonTheme9]
@@ -144,7 +144,7 @@
 	themeEnemySet1_9 = ["minecraft:zombie", "minecraft:husk", "minecraft:drowned", "minecraft:spider"]
 	themeEnemySet2_9 = ["minecraft:wither_skeleton", "minecraft:stray", "minecraft:skeleton", "minecraft:pillager"]
 	themeEnemyHealthScaling9 = 1.0
-	themeDungeonSize9 = 20
+	themeDungeonSize9 = 15
 
 #Settings for Theme 10
 [dungeonTheme10]
@@ -157,7 +157,7 @@
 	themeEnemySet1_10 = ["minecraft:zombie", "minecraft:husk", "minecraft:drowned", "minecraft:spider"]
 	themeEnemySet2_10 = ["minecraft:wither_skeleton", "minecraft:stray", "minecraft:skeleton", "minecraft:pillager"]
 	themeEnemyHealthScaling10 = 1.0
-	themeDungeonSize10 = 20
+	themeDungeonSize10 = 15
 
 #Settings for Theme 11
 [dungeonTheme11]
@@ -169,21 +169,21 @@
 	themeEnemySet1_11 = ["minecraft:zombie", "minecraft:husk", "minecraft:drowned", "minecraft:spider"]
 	themeEnemySet2_11 = ["minecraft:wither_skeleton", "minecraft:stray", "minecraft:skeleton", "minecraft:pillager"]
 	themeEnemyHealthScaling11 = 1.0
-	themeDungeonSize11 = 14
+	themeDungeonSize11 = 15
 	themeEnds11 = []
 
 #Settings for Theme 12
 [dungeonTheme12]
-	themeEntrances12 = []
-	themeFourways12 = []
-	themeThreeways12 = []
-	themeHallways12 = []
-	themeCorners12 = []
-	themeEnds12 = []
-	themeEnemySet1_12 = ["minecraft:zombie", "minecraft:husk", "minecraft:drowned", "minecraft:spider"]
-	themeEnemySet2_12 = ["minecraft:wither_skeleton", "minecraft:stray", "minecraft:skeleton", "minecraft:pillager"]
+	themeEntrances12 = [["test:big_room"]]
+	themeFourways12 = [["dimdungeons:roomair"]]
+	themeThreeways12 = [["dimdungeons:roomair"]]
+	themeHallways12 = [["dimdungeons:roomair"]]
+	themeCorners12 = [["dimdungeons:roomair"]]
+	themeEnds12 = [["dimdungeons:roomair"]]
+	themeEnemySet1_12 = ["minecraft:skeleton"]
+	themeEnemySet2_12 = ["minecraft:skeleton"]
 	themeEnemyHealthScaling12 = 1.0
-	themeDungeonSize12 = 14
+	themeDungeonSize12 = 1
 
 #Settings for Theme 13
 [dungeonTheme13]

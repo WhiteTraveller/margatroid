@@ -27,20 +27,20 @@ Note: Even if no fields are listed above, some methods are still available as fi
 | ---- | ---------- | ----------- | ------- |
 | getInventory |  |  | Container | ✘ |
 | getBlock |  |  | BlockContainerJS | ✘ |
+| getEntity |  |  | LivingEntity | ✘ |
 | getInventoryContainer |  |  | AbstractContainerMenu | ✘ |
-| getEntity |  |  | Player | ✘ |
-| getPlayer |  |  | Player | ✘ |
-| addGameStage | String |  | void | ✘ |
 | hasGameStage | String |  | boolean | ✘ |
+| addGameStage | String |  | void | ✘ |
 | removeGameStage | String |  | void | ✘ |
+| getPlayer |  |  | Player | ✘ |
 | getLevel |  |  | Level | ✘ |
 | getServer |  |  | MinecraftServer | ✘ |
-| success |  |  | Object | ✘ |
-| success | Object |  | Object | ✘ |
-| exit |  |  | Object | ✘ |
 | exit | Object |  | Object | ✘ |
+| exit |  |  | Object | ✘ |
 | cancel |  |  | Object | ✘ |
 | cancel | Object |  | Object | ✘ |
+| success | Object |  | Object | ✘ |
+| success |  |  | Object | ✘ |
 
 
 ### Documented members:
@@ -55,23 +55,14 @@ Gets the chest inventory.
 Gets the chest block.
 ```
 
-- `AbstractContainerMenu getInventoryContainer()`
-```
-Gets the container that was opened or closed.
-```
-
-- `Player getEntity()`
+- `LivingEntity getEntity()`
 ```
 Gets the player that opened or closed the container.
 ```
 
-- `void addGameStage(String var0)`
-
-  Parameters:
-  - var0: String
-
+- `AbstractContainerMenu getInventoryContainer()`
 ```
-Adds the specified game stage to the player
+Gets the container that was opened or closed.
 ```
 
 - `boolean hasGameStage(String var0)`
@@ -83,6 +74,15 @@ Adds the specified game stage to the player
 Checks if the player has the specified game stage
 ```
 
+- `void addGameStage(String var0)`
+
+  Parameters:
+  - var0: String
+
+```
+Adds the specified game stage to the player
+```
+
 - `void removeGameStage(String var0)`
 
   Parameters:
@@ -92,31 +92,6 @@ Checks if the player has the specified game stage
 Removes the specified game stage from the player
 ```
 
-- `Object success()`
-```
-Stops the event with default exit value. Execution will be stopped **immediately**.
-
-`success` denotes a `true` outcome.
-```
-
-- `Object success(Object var0)`
-
-  Parameters:
-  - var0: Object
-
-```
-Stops the event with the given exit value. Execution will be stopped **immediately**.
-
-`success` denotes a `true` outcome.
-```
-
-- `Object exit()`
-```
-Stops the event with default exit value. Execution will be stopped **immediately**.
-
-`exit` denotes a `default` outcome.
-```
-
 - `Object exit(Object var0)`
 
   Parameters:
@@ -124,6 +99,13 @@ Stops the event with default exit value. Execution will be stopped **immediately
 
 ```
 Stops the event with the given exit value. Execution will be stopped **immediately**.
+
+`exit` denotes a `default` outcome.
+```
+
+- `Object exit()`
+```
+Stops the event with default exit value. Execution will be stopped **immediately**.
 
 `exit` denotes a `default` outcome.
 ```
@@ -144,6 +126,24 @@ Cancels the event with default exit value. Execution will be stopped **immediate
 Cancels the event with the given exit value. Execution will be stopped **immediately**.
 
 `cancel` denotes a `false` outcome.
+```
+
+- `Object success(Object var0)`
+
+  Parameters:
+  - var0: Object
+
+```
+Stops the event with the given exit value. Execution will be stopped **immediately**.
+
+`success` denotes a `true` outcome.
+```
+
+- `Object success()`
+```
+Stops the event with default exit value. Execution will be stopped **immediately**.
+
+`success` denotes a `true` outcome.
 ```
 
 

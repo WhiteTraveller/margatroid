@@ -23,30 +23,25 @@ Note: Even if no fields are listed above, some methods are still available as fi
 
 | Name | Parameters | Return type | Static? |
 | ---- | ---------- | ----------- | ------- |
-| getLevel |  |  | Level | ✘ |
-| getBlock |  |  | BlockContainerJS | ✘ |
-| getDistance |  |  | float | ✘ |
 | getEntity |  |  | Entity | ✘ |
+| getDistance |  |  | float | ✘ |
+| getBlock |  |  | BlockContainerJS | ✘ |
+| getLevel |  |  | Level | ✘ |
 | getPlayer |  |  | Player | ✘ |
 | getServer |  |  | MinecraftServer | ✘ |
-| success |  |  | Object | ✘ |
-| success | Object |  | Object | ✘ |
-| exit |  |  | Object | ✘ |
 | exit | Object |  | Object | ✘ |
+| exit |  |  | Object | ✘ |
 | cancel |  |  | Object | ✘ |
 | cancel | Object |  | Object | ✘ |
+| success | Object |  | Object | ✘ |
+| success |  |  | Object | ✘ |
 
 
 ### Documented members:
 
-- `Level getLevel()`
+- `Entity getEntity()`
 ```
-The level that the farmland and the entity are in.
-```
-
-- `BlockContainerJS getBlock()`
-```
-The farmland block.
+The entity that is attempting to trample the farmland.
 ```
 
 - `float getDistance()`
@@ -54,34 +49,14 @@ The farmland block.
 The distance of the entity from the block.
 ```
 
-- `Entity getEntity()`
+- `BlockContainerJS getBlock()`
 ```
-The entity that is attempting to trample the farmland.
-```
-
-- `Object success()`
-```
-Stops the event with default exit value. Execution will be stopped **immediately**.
-
-`success` denotes a `true` outcome.
+The farmland block.
 ```
 
-- `Object success(Object var0)`
-
-  Parameters:
-  - var0: Object
-
+- `Level getLevel()`
 ```
-Stops the event with the given exit value. Execution will be stopped **immediately**.
-
-`success` denotes a `true` outcome.
-```
-
-- `Object exit()`
-```
-Stops the event with default exit value. Execution will be stopped **immediately**.
-
-`exit` denotes a `default` outcome.
+The level that the farmland and the entity are in.
 ```
 
 - `Object exit(Object var0)`
@@ -91,6 +66,13 @@ Stops the event with default exit value. Execution will be stopped **immediately
 
 ```
 Stops the event with the given exit value. Execution will be stopped **immediately**.
+
+`exit` denotes a `default` outcome.
+```
+
+- `Object exit()`
+```
+Stops the event with default exit value. Execution will be stopped **immediately**.
 
 `exit` denotes a `default` outcome.
 ```
@@ -111,6 +93,24 @@ Cancels the event with default exit value. Execution will be stopped **immediate
 Cancels the event with the given exit value. Execution will be stopped **immediately**.
 
 `cancel` denotes a `false` outcome.
+```
+
+- `Object success(Object var0)`
+
+  Parameters:
+  - var0: Object
+
+```
+Stops the event with the given exit value. Execution will be stopped **immediately**.
+
+`success` denotes a `true` outcome.
+```
+
+- `Object success()`
+```
+Stops the event with default exit value. Execution will be stopped **immediately**.
+
+`success` denotes a `true` outcome.
 ```
 
 

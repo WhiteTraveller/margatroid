@@ -1,22 +1,6 @@
-const $EntityTravelToDimensionEvent = Java.loadClass("net.minecraftforge.event.entity.EntityTravelToDimensionEvent")
 const $ServerPlayer = Java.loadClass("net.minecraft.server.level.ServerPlayer")
 
 
-ForgeEvents.onEvent($EntityTravelToDimensionEvent, event => {
-    global.eventTest(event);
-});
-
-global.mobSpawner = function (entity) {
-}
-
-global.chestSpawner = function (entity) {
-}
-
-global.dimensionDestory = function (entity) {
-}
-
-global.treasuraSpawner = function (entity) {
-}
 
 StartupEvents.registry("block", (event) => {
     //event.create(方块id, 方块类型)
@@ -65,41 +49,42 @@ StartupEvents.registry("item", event => {
     event.create("test:dream_matter", "basic")
 })
 
-global.eventTest = event => {
-    let player = event.entity;
-    try {
-        let resourceKey = event.dimension;
-        if (player instanceof $ServerPlayer) {
-            if (resourceKey.getPath() == "dungeon_dimension") {
-                let count = player.inventory.count();
-                if (player.nbt["Dimension"] != "dimdungeons:dungeon_dimension") {
-                    if (count > 0 && player.nbt["Dimension"] != "dimdungeons:dungeon_dimension") {
-                        let player = event.entity;
-                        event.setCanceled(true);
-                        player.tell("你不能去这个维度,因为你身上有物品");
-                    }
-                    else {
-                        player.modifyAttribute('minecraft:generic.max_health', 'health_reduction', -14, 'addition')
-                        player.health = 6;
-                        player.runCommandSilent(`title @s title "你感觉浑身无力"`);
-                    }
-                }
-
-            }
-
-            if (player.nbt["Dimension"] == "dimdungeons:dungeon_dimension") {
-                if (resourceKey.getPath() != "dungeon_dimension") {
-                    player.inventory.clear();
-                    player.modifyAttribute('minecraft:generic.max_health', 'health_reduction', 0, 'addition')
-                }
-            }
-
-        }
-
-    } catch (e) {
-        player.tell("error" + e);
-    }
-}
+StartupEvents.registry('item', event => {
+    event.create('test')
+        .attachCuriosCapability(
+            CuriosJSCapabilityBuilder.create()
+                .curioTick((slotContext, stack) => { })
+                .onEquip((slotContext, oldStack, newStack) => { })
+                .onUnequip((slotContext, oldStack, newStack) => { })
+                .canEquip((slotContext, stack) => true)
+                .canUnequip((slotContext, stack) => true)
+                .modifySlotsTooltip((tooltips, stack) => tooltips)
+                .addAttribute(
+                    "minecraft:generic.max_health",
+                    UUID,
+                    20,
+                    'addition'
+                )
+                .modifyAttribute(attributeModificationContext => {
+                    let { slotContext, UUID, stack, modifiers } = attributeModificationContext
+                    attributeModificationContext.modify(
+                        "minecraft:generic.armor",
+                        "identifier",
+                        20,
+                        'addition'
+                    )
+                })
+                .canDrop((slotContext, source, lootingLevel, recentlyHit, stack) => true)
+                .modifyAttributesTooltip((tooltips, stack) => tooltips)
+                .modifyFortuneLevel((slotContext, lootContext, stack) => 0)
+                .modifyLootingLevel((slotContext, source, target, baseLooting, stack) => 0)
+                .makesPiglinsNeutral((slotContext, stack) => false)
+                .canWalkOnPowderedSnow((slotContext, stack) => false)
+                .isEnderMask((slotContext, enderMan, stack) => false)
+        )
+        .maxStackSize(1)
+        .tag("curios:head")
+})
 
 
 

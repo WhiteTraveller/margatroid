@@ -30,31 +30,31 @@ Note: Even if no fields are listed above, some methods are still available as fi
 
 | Name | Parameters | Return type | Static? |
 | ---- | ---------- | ----------- | ------- |
-| getSpawner |  |  | BaseSpawner | ✘ |
-| getLevel |  |  | Level | ✘ |
-| getBlock |  |  | BlockContainerJS | ✘ |
 | getType |  |  | MobSpawnType | ✘ |
-| getEntity |  |  | LivingEntity | ✘ |
+| getEntity |  |  | Entity | ✘ |
+| getBlock |  |  | BlockContainerJS | ✘ |
+| getLevel |  |  | Level | ✘ |
+| getSpawner |  |  | BaseSpawner | ✘ |
 | getPlayer |  |  | Player | ✘ |
 | getServer |  |  | MinecraftServer | ✘ |
-| success |  |  | Object | ✘ |
-| success | Object |  | Object | ✘ |
-| exit |  |  | Object | ✘ |
 | exit | Object |  | Object | ✘ |
+| exit |  |  | Object | ✘ |
 | cancel |  |  | Object | ✘ |
 | cancel | Object |  | Object | ✘ |
+| success | Object |  | Object | ✘ |
+| success |  |  | Object | ✘ |
 
 
 ### Documented members:
 
-- `BaseSpawner getSpawner()`
+- `MobSpawnType getType()`
 ```
-The spawner that spawned the entity. Can be null if the entity was spawned by worldgen.
+The type of spawn.
 ```
 
-- `Level getLevel()`
+- `Entity getEntity()`
 ```
-The level the entity is being spawned into.
+The entity being spawned.
 ```
 
 - `BlockContainerJS getBlock()`
@@ -62,39 +62,14 @@ The level the entity is being spawned into.
 The block the entity is being spawned on.
 ```
 
-- `MobSpawnType getType()`
+- `Level getLevel()`
 ```
-The type of spawn.
-```
-
-- `LivingEntity getEntity()`
-```
-The entity being spawned.
+The level the entity is being spawned into.
 ```
 
-- `Object success()`
+- `BaseSpawner getSpawner()`
 ```
-Stops the event with default exit value. Execution will be stopped **immediately**.
-
-`success` denotes a `true` outcome.
-```
-
-- `Object success(Object var0)`
-
-  Parameters:
-  - var0: Object
-
-```
-Stops the event with the given exit value. Execution will be stopped **immediately**.
-
-`success` denotes a `true` outcome.
-```
-
-- `Object exit()`
-```
-Stops the event with default exit value. Execution will be stopped **immediately**.
-
-`exit` denotes a `default` outcome.
+The spawner that spawned the entity. Can be null if the entity was spawned by worldgen.
 ```
 
 - `Object exit(Object var0)`
@@ -104,6 +79,13 @@ Stops the event with default exit value. Execution will be stopped **immediately
 
 ```
 Stops the event with the given exit value. Execution will be stopped **immediately**.
+
+`exit` denotes a `default` outcome.
+```
+
+- `Object exit()`
+```
+Stops the event with default exit value. Execution will be stopped **immediately**.
 
 `exit` denotes a `default` outcome.
 ```
@@ -124,6 +106,24 @@ Cancels the event with default exit value. Execution will be stopped **immediate
 Cancels the event with the given exit value. Execution will be stopped **immediately**.
 
 `cancel` denotes a `false` outcome.
+```
+
+- `Object success(Object var0)`
+
+  Parameters:
+  - var0: Object
+
+```
+Stops the event with the given exit value. Execution will be stopped **immediately**.
+
+`success` denotes a `true` outcome.
+```
+
+- `Object success()`
+```
+Stops the event with default exit value. Execution will be stopped **immediately**.
+
+`success` denotes a `true` outcome.
 ```
 
 

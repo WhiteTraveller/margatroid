@@ -33,24 +33,18 @@ Note: Even if no fields are listed above, some methods are still available as fi
 
 | Name | Parameters | Return type | Static? |
 | ---- | ---------- | ----------- | ------- |
-| rawText | FormattedCharSequence, int, int, int, boolean |  | void | ✘ |
-| translate | double, double |  | void | ✘ |
-| getVariables |  |  | VariableSet | ✘ |
 | scale | float, float |  | void | ✘ |
 | scale | float |  | void | ✘ |
 | text | Component, int, int, int, boolean |  | void | ✘ |
+| translate | double, double |  | void | ✘ |
+| rotateDeg | float |  | void | ✘ |
+| alignY | float, float, AlignMode |  | float | ✘ |
+| rotateRad | float |  | void | ✘ |
+| alignX | float, float, AlignMode |  | float | ✘ |
+| getVariables |  |  | VariableSet | ✘ |
+| rawText | FormattedCharSequence, int, int, int, boolean |  | void | ✘ |
 | rectangle | float, float, float, float, float, int |  | void | ✘ |
 | rectangle | float, float, float, float, float, int, float, float, float, float |  | void | ✘ |
-| alignX | float, float, AlignMode |  | float | ✘ |
-| rotateDeg | float |  | void | ✘ |
-| rotateRad | float |  | void | ✘ |
-| alignY | float, float, AlignMode |  | float | ✘ |
-| translate | double, double, double |  | void | ✘ |
-| bindTextureForSetup | ResourceLocation |  | void | ✘ |
-| vertex | Matrix4f, float, float, float, int |  | void | ✘ |
-| vertex | Matrix4f, float, float, float, int, float, float |  | void | ✘ |
-| setShaderColor | float, float, float, float |  | void | ✘ |
-| setShaderTexture | ResourceLocation |  | void | ✘ |
 | multiply | Quaternionf |  | void | ✘ |
 | blend | boolean |  | void | ✘ |
 | scale | float, float, float |  | void | ✘ |
@@ -58,39 +52,36 @@ Note: Even if no fields are listed above, some methods are still available as fi
 | begin | VertexFormat$Mode, VertexFormat |  | void | ✘ |
 | push |  |  | void | ✘ |
 | pop |  |  | void | ✘ |
-| setPositionColorShader |  |  | void | ✘ |
-| setPositionColorTextureShader |  |  | void | ✘ |
-| multiplyWithMatrix | Matrix4f |  | void | ✘ |
-| setShaderInstance | Supplier<ShaderInstance> |  | void | ✘ |
+| translate | double, double, double |  | void | ✘ |
 | resetShaderColor |  |  | void | ✘ |
-| getMatrix |  |  | Matrix4f | ✘ |
-| beginQuads | VertexFormat |  | void | ✘ |
+| setShaderInstance | Supplier<ShaderInstance> |  | void | ✘ |
 | beginQuads | boolean |  | void | ✘ |
-| getPlayer |  |  | Player | ✘ |
+| beginQuads | VertexFormat |  | void | ✘ |
+| multiplyWithMatrix | Matrix4f |  | void | ✘ |
+| getMatrix |  |  | Matrix4f | ✘ |
+| setShaderColor | float, float, float, float |  | void | ✘ |
+| setShaderTexture | ResourceLocation |  | void | ✘ |
+| setPositionColorTextureShader |  |  | void | ✘ |
+| setPositionColorShader |  |  | void | ✘ |
+| vertex | Matrix4f, float, float, float, int |  | void | ✘ |
+| vertex | Matrix4f, float, float, float, int, float, float |  | void | ✘ |
+| bindTextureForSetup | ResourceLocation |  | void | ✘ |
 | getEntity |  |  | Entity | ✘ |
-| addGameStage | String |  | void | ✘ |
+| getPlayer |  |  | LocalPlayer | ✘ |
 | hasGameStage | String |  | boolean | ✘ |
+| addGameStage | String |  | void | ✘ |
 | removeGameStage | String |  | void | ✘ |
 | getLevel |  |  | Level | ✘ |
 | getServer |  |  | MinecraftServer | ✘ |
-| success |  |  | Object | ✘ |
-| success | Object |  | Object | ✘ |
-| exit |  |  | Object | ✘ |
 | exit | Object |  | Object | ✘ |
+| exit |  |  | Object | ✘ |
 | cancel |  |  | Object | ✘ |
 | cancel | Object |  | Object | ✘ |
+| success | Object |  | Object | ✘ |
+| success |  |  | Object | ✘ |
 
 
 ### Documented members:
-
-- `void addGameStage(String var0)`
-
-  Parameters:
-  - var0: String
-
-```
-Adds the specified game stage to the player
-```
 
 - `boolean hasGameStage(String var0)`
 
@@ -99,6 +90,15 @@ Adds the specified game stage to the player
 
 ```
 Checks if the player has the specified game stage
+```
+
+- `void addGameStage(String var0)`
+
+  Parameters:
+  - var0: String
+
+```
+Adds the specified game stage to the player
 ```
 
 - `void removeGameStage(String var0)`
@@ -110,31 +110,6 @@ Checks if the player has the specified game stage
 Removes the specified game stage from the player
 ```
 
-- `Object success()`
-```
-Stops the event with default exit value. Execution will be stopped **immediately**.
-
-`success` denotes a `true` outcome.
-```
-
-- `Object success(Object var0)`
-
-  Parameters:
-  - var0: Object
-
-```
-Stops the event with the given exit value. Execution will be stopped **immediately**.
-
-`success` denotes a `true` outcome.
-```
-
-- `Object exit()`
-```
-Stops the event with default exit value. Execution will be stopped **immediately**.
-
-`exit` denotes a `default` outcome.
-```
-
 - `Object exit(Object var0)`
 
   Parameters:
@@ -142,6 +117,13 @@ Stops the event with default exit value. Execution will be stopped **immediately
 
 ```
 Stops the event with the given exit value. Execution will be stopped **immediately**.
+
+`exit` denotes a `default` outcome.
+```
+
+- `Object exit()`
+```
+Stops the event with default exit value. Execution will be stopped **immediately**.
 
 `exit` denotes a `default` outcome.
 ```
@@ -162,6 +144,24 @@ Cancels the event with default exit value. Execution will be stopped **immediate
 Cancels the event with the given exit value. Execution will be stopped **immediately**.
 
 `cancel` denotes a `false` outcome.
+```
+
+- `Object success(Object var0)`
+
+  Parameters:
+  - var0: Object
+
+```
+Stops the event with the given exit value. Execution will be stopped **immediately**.
+
+`success` denotes a `true` outcome.
+```
+
+- `Object success()`
+```
+Stops the event with default exit value. Execution will be stopped **immediately**.
+
+`success` denotes a `true` outcome.
 ```
 
 

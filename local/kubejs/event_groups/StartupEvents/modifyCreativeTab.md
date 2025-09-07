@@ -21,51 +21,26 @@ Note: Even if no fields are listed above, some methods are still available as fi
 
 | Name | Parameters | Return type | Static? |
 | ---- | ---------- | ----------- | ------- |
-| removeDisplay | Ingredient |  | void | ✘ |
-| removeSearch | Ingredient |  | void | ✘ |
-| addAfter | ItemStack, ItemStack[] |  | void | ✘ |
-| addAfter | ItemStack, ItemStack[], CreativeModeTab$TabVisibility |  | void | ✘ |
-| setDisplayName | Component |  | void | ✘ |
-| setIcon | ItemStack |  | void | ✘ |
-| addBefore | ItemStack, ItemStack[], CreativeModeTab$TabVisibility |  | void | ✘ |
-| addBefore | ItemStack, ItemStack[] |  | void | ✘ |
 | add | ItemStack[] |  | void | ✘ |
 | add | ItemStack[], CreativeModeTab$TabVisibility |  | void | ✘ |
 | remove | Ingredient |  | void | ✘ |
-| success |  |  | Object | ✘ |
-| success | Object |  | Object | ✘ |
-| exit |  |  | Object | ✘ |
+| removeSearch | Ingredient |  | void | ✘ |
+| setDisplayName | Component |  | void | ✘ |
+| removeDisplay | Ingredient |  | void | ✘ |
+| addAfter | ItemStack, ItemStack[], CreativeModeTab$TabVisibility |  | void | ✘ |
+| addAfter | ItemStack, ItemStack[] |  | void | ✘ |
+| addBefore | ItemStack, ItemStack[], CreativeModeTab$TabVisibility |  | void | ✘ |
+| addBefore | ItemStack, ItemStack[] |  | void | ✘ |
+| setIcon | ItemStack |  | void | ✘ |
 | exit | Object |  | Object | ✘ |
+| exit |  |  | Object | ✘ |
 | cancel |  |  | Object | ✘ |
 | cancel | Object |  | Object | ✘ |
+| success | Object |  | Object | ✘ |
+| success |  |  | Object | ✘ |
 
 
 ### Documented members:
-
-- `Object success()`
-```
-Stops the event with default exit value. Execution will be stopped **immediately**.
-
-`success` denotes a `true` outcome.
-```
-
-- `Object success(Object var0)`
-
-  Parameters:
-  - var0: Object
-
-```
-Stops the event with the given exit value. Execution will be stopped **immediately**.
-
-`success` denotes a `true` outcome.
-```
-
-- `Object exit()`
-```
-Stops the event with default exit value. Execution will be stopped **immediately**.
-
-`exit` denotes a `default` outcome.
-```
 
 - `Object exit(Object var0)`
 
@@ -74,6 +49,13 @@ Stops the event with default exit value. Execution will be stopped **immediately
 
 ```
 Stops the event with the given exit value. Execution will be stopped **immediately**.
+
+`exit` denotes a `default` outcome.
+```
+
+- `Object exit()`
+```
+Stops the event with default exit value. Execution will be stopped **immediately**.
 
 `exit` denotes a `default` outcome.
 ```
@@ -94,6 +76,24 @@ Cancels the event with default exit value. Execution will be stopped **immediate
 Cancels the event with the given exit value. Execution will be stopped **immediately**.
 
 `cancel` denotes a `false` outcome.
+```
+
+- `Object success(Object var0)`
+
+  Parameters:
+  - var0: Object
+
+```
+Stops the event with the given exit value. Execution will be stopped **immediately**.
+
+`success` denotes a `true` outcome.
+```
+
+- `Object success()`
+```
+Stops the event with default exit value. Execution will be stopped **immediately**.
+
+`success` denotes a `true` outcome.
 ```
 
 
