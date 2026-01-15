@@ -4,7 +4,6 @@ ForgeEvents.onEvent($EntityTravelToDimensionEvent, event => {
     entityTravelToDimension(event);
 });
 
-
 function entityTravelToDimension(event) {
     let player = event.entity;
     try {
@@ -45,7 +44,7 @@ function resetPlayerAttributeAndHealth(player) {
 }
 
 function tellPlayerIn(player) {
-    player.runCommandSilent(`title @s title "你感觉浑身无力"`);
+    // player.runCommandSilent(`title @s title "你感觉浑身无力"`);
 }
 
 function tellPlayerCannotIn(player) {

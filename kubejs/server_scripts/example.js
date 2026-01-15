@@ -19,13 +19,10 @@ ServerEvents.loaded((event) => {
 global.mobSpawner = function (entity) {
     let level = entity.getLevel();
     if (level.getDimension() == 'dimdungeons:dungeon_dimension') {
-        let merchant = level.createEntity('minecraft:zombie');
-        let pos = entity.getBlockPos();
-        // merchant.mergeNbt("{NoAI:1b,Invulnerable:1b,PersistenceRequired:1b}")
-        merchant.mergeNbt("{PersistenceRequired:1b, DungeonMob:1b}")
-        merchant.addTag("dungeon_mob")
-        merchant.setPosition(pos.x + 0.5, pos.y + 1, pos.z + 0.5)
-        merchant.spawn();
+        let x = entity.block.x
+        let y = entity.block.y
+        let z = entity.block.z
+        global.spawnMob(level, x, y, z, 1)
 
         entity.block.set("meng:test_treasure_spanwer")
     }

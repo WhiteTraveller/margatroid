@@ -70,7 +70,7 @@
 
 #Settings for Theme 4
 [dungeonTheme4]
-	themeEntrances4 = [["test:big_room"]]
+	themeEntrances4 = [["margatroid:test_start"]]
 	themeFourways4 = [["dimdungeons:roomair"]]
 	themeThreeways4 = [["dimdungeons:roomair"]]
 	themeHallways4 = [["dimdungeons:roomair"]]

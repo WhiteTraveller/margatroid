@@ -1,21 +1,75 @@
-// priority: 0
-
-// Visit the wiki for more info - https://kubejs.com/
+global.getRelicId = function(name) {
+    return "marguerite:" + name
+}
 
 ClientEvents.lang("zh_cn", (event) => {
-	event.add("item.test.dream_matter", "梦境物质")
+    event.add("item.marguerite.dungeon_reward", "地牢奖励")
+    event.add("item.marguerite.backpack_space", "背包空格")
+    for (let i = 0; i < global.relics.length; i ++) {
+        let relic = global.relics[i]
+        event.add("item.marguerite." + relic.name, relic.nameZH)
+    }
 })
 
-ItemEvents.tooltip(event => {
 
-    event.addAdvanced('test:dream_matter', (item, advanced, text) => {
-        text.add(Text.red(`此物指引了你的方向，切勿丢失`))
-        text.add(Text.aqua(`由意识产生的物质，反映着梦境空间的状态`))
-        text.add(Text.aqua(`使用此物打开房间可以充能`))
-        text.add(Text.aqua(`充能至100%后按住shift右键地面可以传送至前往下一层的传送门前(无法返回)`))
-		text.add(Text.green('已充能: ').append(Text.white((100 - item.nbt.getInt("room_left") * 10).toString() + "%")))
-		text.add(Text.green('已完成层数: ').append(Text.white(item.nbt.getInt("level").toString())))
+ItemEvents.tooltip(event => {
+    event.addAdvanced('marguerite:dungeon_reward', (item, advanced, text) => {
+        text.add(Text.red(`右键获取奖励`))
     })
+    for (let i = 0; i < global.relics.length; i ++) {
+        let relic = global.relics[i]
+        event.addAdvanced(global.getRelicId(relic.name), (item, advanced, text) => {
+            text.add(relic.description)
+        })
+        event.addAdvanced(global.getRelicId(relic.name), (item, advanced, text) => {
+            text.add(relic.specialDescription)
+        })
+        for (let k = 0; k < relic.guideTexture.length; k ++) {
+            let texture = relic.guideTexture[k]
+            event.addAdvanced(global.getRelicId(relic.name), (item, advanced, text) => {
+                text.add(texture)
+            })
+        }
+        event.addAdvanced(global.getRelicId(relic.name), (item, advanced, text) => {
+            text.add(Text.darkGray("-----------------------"))
+        })
+        for (let j = 0; j < relic.tags.length; j ++) {
+            let tag = relic.tags[j]
+            switch (tag.color) {
+                case 'gray':
+                    event.addAdvanced(global.getRelicId(relic.name), (item, advanced, text) => {
+                        text.add(Text.gray(tag.nameZH))
+                    })
+                    break;
+                case 'yellow':
+                    event.addAdvanced(global.getRelicId(relic.name), (item, advanced, text) => {
+                        text.add(Text.yellow(tag.nameZH))
+                    })
+                    break;
+                case 'blue':
+                    event.addAdvanced(global.getRelicId(relic.name), (item, advanced, text) => {
+                        text.add(Text.blue(tag.nameZH))
+                    })
+                    break;
+                case 'green':
+                    event.addAdvanced(global.getRelicId(relic.name), (item, advanced, text) => {
+                        text.add(Text.green(tag.nameZH))
+                    })
+                    break;
+                case 'white':
+                    event.addAdvanced(global.getRelicId(relic.name), (item, advanced, text) => {
+                        text.add(Text.white(tag.nameZH))
+                    })
+                    break;
+            }
+        }
+        event.addAdvanced(global.getRelicId(relic.name), (item, advanced, text) => {
+            text.add(Text.darkGray("-----------------------"))
+        })
+        event.addAdvanced(global.getRelicId(relic.name), (item, advanced, text) => {
+            text.add(Text.darkGray(relic.story))
+        })
+    }
 })
 
 
