@@ -26,5 +26,11 @@ local/
 木春菊-natives/OpenAL.dll
 木春菊.jar
 木春菊.json
+checkbox_states.json
+hotbar.nbt
+options.txt
+rhino.local.properties
+servers.dat
 authlib-injector.log
 usercache.json
+usernamecache.json
