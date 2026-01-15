@@ -16,3 +16,13 @@ patchouli_data.json
 crash-reports/
 shaderpacks/
 local/
+木春菊-natives/glfw.dll
+木春菊-natives/jemalloc.dll
+木春菊-natives/jna7829435905460988121.dll
+木春菊-natives/jna7829435905460988121.dll.x
+木春菊-natives/lwjgl_opengl.dll
+木春菊-natives/lwjgl_stb.dll
+木春菊-natives/lwjgl.dll
+木春菊-natives/OpenAL.dll
+authlib-injector.log
+usercache.json
