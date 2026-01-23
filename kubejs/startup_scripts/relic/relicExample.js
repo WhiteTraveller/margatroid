@@ -6,7 +6,7 @@ global.relicExample = {
     nameZH: "示例遗物",
     description: Text.gray("攻击伤害").append(Text.green("+1")),
     specialDescription: Text.gray(""),
-    story: "这是一个示例遗物",
+    story: "这是一个示例的遗物",
     tags: [],
     guideTexture: [],
     /**
@@ -14,20 +14,20 @@ global.relicExample = {
     * @param {Internal.ItemStack} oldStack
     * @param {Internal.ItemStack} newStack
     */
-    onEquip: function(slotContext, oldStack, newStack) {
+    onEquip: function (slotContext, oldStack, newStack) {
     },
     /**
     * @param {Internal.SlotContext} slotContext
     * @param {Internal.ItemStack} oldStack
     * @param {Internal.ItemStack} newStack
     */
-    onUnEquip: function(slotContext, oldStack, newStack) {
+    onUnEquip: function (slotContext, oldStack, newStack) {
     },
     /**
     * @param {Internal.LivingEntity} player
     * @param {number} i
     */
-    onLoad: function(player, i) {
+    onLoad: function (player, i) {
         try {
             let a = false;
             let b;
@@ -41,7 +41,7 @@ global.relicExample = {
                 tall: 180,
                 length: 30
             }
-            let g = function(a) {
+            let g = function (a) {
                 console.log("This is a function:" + a);
             }
             g("AAA");
@@ -51,5 +51,5 @@ global.relicExample = {
         }
         player.modifyAttribute('generic.attack_damage', this.nameZH + i, 1, 'addition');
     },
-    onDoDamage: function() {}
+    onDoDamage: function () { }
 }
