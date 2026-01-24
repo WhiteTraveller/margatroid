@@ -19,10 +19,14 @@ ItemEvents.tooltip(event => {
     for (let i = 0; i < global.relics.length; i ++) {
         let relic = global.relics[i]
         event.addAdvanced(global.getRelicId(relic.name), (item, advanced, text) => {
-            text.add(relic.description)
+            if (relic.description != null) {
+                text.add(relic.description)
+            }
         })
         event.addAdvanced(global.getRelicId(relic.name), (item, advanced, text) => {
-            text.add(relic.specialDescription)
+            if (relic.specialDescription != null) {
+                text.add(relic.specialDescription)
+            }
         })
         for (let k = 0; k < relic.guideTexture.length; k ++) {
             let texture = relic.guideTexture[k]

@@ -1,30 +1,13 @@
 let curiosApi = Java.loadClass('top.theillusivec4.curios.api.CuriosApi');
 
-global.relics = [
-    global.relicExample,
-    global.relicBackpackSpace,
-    global.relicKnifeRed,
-    global.relicKnifeGreen,
-    global.relicKnifeBlue,
-    global.relicFuransuDoll,
-    global.relicHouraiDoll,
-    global.relicGoriaDoll,
-    global.relicKyotoDoll,
-    global.relicShanghaiDoll,
-    global.relicCoin,
-    global.relicBroomstick,
-    global.relicBattry,
-    global.relicLegStrap,
-    global.relicMagicThread
-]
-
 global.getRelicId = function(name) {
     return "marguerite:" + name
 }
 
 StartupEvents.registry('item', event => {
-    for (let i = 0; i < global.relics.length; i ++) {
-        let relic = global.relics[i]
+    let relics = global.relicRegister.relics
+    for (let i = 0; i < relics.length; i ++) {
+        let relic = relics[i]
         let e = event.create(global.getRelicId(relic.name))
         .attachCuriosCapability(
             CuriosJSCapabilityBuilder.create()
