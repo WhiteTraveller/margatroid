@@ -2,10 +2,10 @@
 let curiosApi = Java.loadClass('top.theillusivec4.curios.api.CuriosApi');
 
 global.relicRegister.register(relic => {
-    relic.name("magic_thread")
-        .nameZH("魔法丝线")
-        .specialDescription(Text.gray("取消除歌莉娅人偶以外的人偶速度负面效果"))
-        .onLoad((player, index) => {
+    relic.setName("magic_thread")
+        .setNameZH("魔法丝线")
+        .setSpecialDescription(Text.gray("取消除歌莉娅人偶以外的人偶速度负面效果"))
+        .setOnLoad((player, index) => {
             // 获取Curios物品
             let curiosHelper = curiosApi.getCuriosHelper();
             let curiosAll = curiosHelper.getEquippedCurios(player).resolve().get();
@@ -20,6 +20,6 @@ global.relicRegister.register(relic => {
                     }
                 });
             }
-            player.modifyAttribute('generic.movement_speed', this.nameZH + index, 0.01 * n, 'addition');
+            player.modifyAttribute('generic.movement_speed', relic.nameZH + index, 0.01 * n, 'addition');
         },)
 })

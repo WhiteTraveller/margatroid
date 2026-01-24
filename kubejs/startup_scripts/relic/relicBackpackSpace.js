@@ -2,12 +2,12 @@
 let curiosApi = Java.loadClass('top.theillusivec4.curios.api.CuriosApi');
 
 global.relicRegister.register(relic => {
-    relic.name("backpack_space")
-        .nameZH("背包镶板")
-        .description(Text.gray("无效果"))
-        .specialDescription(Text.gray("使用钻石取下"))
-        .story("占据背包空间的镶板，可以用钻石将其取下。")
-        .onUnEquip(function (slotContext, oldStack, newStack) {
+    relic.setName("backpack_space")
+        .setNameZH("背包镶板")
+        .setDescription(Text.gray("无效果"))
+        .setSpecialDescription(Text.gray("使用钻石取下"))
+        .setStory("占据背包空间的镶板，可以用钻石将其取下。")
+        .setOnUnEquip((slotContext, oldStack, newStack) => {
             global.updatePlayerBackpack(slotContext.entity())
             var player1 = slotContext.entity();
             var items = player1.inventory;
@@ -23,7 +23,7 @@ global.relicRegister.register(relic => {
                 }
             }
         })
-        .canUnEquip((slotContext, stack) => {
+        .setCanUnEquip((slotContext, stack) => {
             var player1 = slotContext.entity();
             player1.getLevel().getPlayers()
             if (player1.isPlayer()) {

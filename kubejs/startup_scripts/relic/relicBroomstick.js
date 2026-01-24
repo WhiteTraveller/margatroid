@@ -2,10 +2,10 @@
 let curiosApi = Java.loadClass('top.theillusivec4.curios.api.CuriosApi');
 
 global.relicRegister.register(relic => {
-    relic.name("broomstick")
-        .nameZH("扫帚")
-        .description(Text.gray("速度").append(Text.green("+0.02")))
-        .onLoad((player, i) => {
-            player.modifyAttribute('generic.movement_speed', this.nameZH + i, 0.02, 'addition');
+    relic.setName("broomstick")
+        .setNameZH("扫帚")
+        .setDescription(Text.gray("速度").append(Text.green("+0.02")))
+        .setOnLoad((player, i) => {
+            player.modifyAttribute('generic.movement_speed', relic.nameZH + i, 0.02, 'addition');
         },)
 })

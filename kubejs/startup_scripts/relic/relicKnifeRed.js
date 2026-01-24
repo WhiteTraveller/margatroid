@@ -2,19 +2,19 @@
 let curiosApi = Java.loadClass('top.theillusivec4.curios.api.CuriosApi');
 
 global.relicRegister.register(relic => {
-    relic.name("red_knife")
-        .nameZH("红色小刀")
-        .description(Text.gray("伤害").append(Text.green("+1")).append(Text.gray("暴击率")).append(Text.green("+0.05")))
-        .specialDescription(Text.gray("你只能生效前").append(Text.white("2")).append(Text.gray("个小刀，因为你只有两只手")))
-        .tags([global.margueriteTags.metal, global.margueriteTags.knife])
-        .onLoad((player, index) => {
+    relic.setName("red_knife")
+        .setNameZH("红色小刀")
+        .setDescription(Text.gray("伤害").append(Text.green("+1")).append(Text.gray("暴击率")).append(Text.green("+0.05")))
+        .setSpecialDescription(Text.gray("你只能生效前").append(Text.white("2")).append(Text.gray("个小刀，因为你只有两只手")))
+        .setTags([global.margueriteTags.metal, global.margueriteTags.knife])
+        .setOnLoad((player, index) => {
             // 获取Curios物品
             let curiosHelper = curiosApi.getCuriosHelper();
             let curiosAll = curiosHelper.getEquippedCurios(player).resolve().get();
 
             if (index % 9 != 0 && curiosAll.getStackInSlot(index - 1).getId() == "marguerite:shanghai_doll") {
-                player.modifyAttribute('generic.attack_damage', this.nameZH + index, 1, 'addition');
-                player.modifyAttribute('l2damagetracker:crit_rate', this.nameZH + index, 0.05, 'addition');
+                player.modifyAttribute('generic.attack_damage', relic.nameZH + index, 1, 'addition');
+                player.modifyAttribute('l2damagetracker:crit_rate', relic.nameZH + index, 0.05, 'addition');
                 return;
             }
 
@@ -41,7 +41,7 @@ global.relicRegister.register(relic => {
                     return;
                 }
             }
-            player.modifyAttribute('generic.attack_damage', this.nameZH + index, 1, 'addition');
-            player.modifyAttribute('l2damagetracker:crit_rate', this.nameZH + index, 0.05, 'addition');
+            player.modifyAttribute('generic.attack_damage', relic.nameZH + index, 1, 'addition');
+            player.modifyAttribute('l2damagetracker:crit_rate', relic.nameZH + index, 0.05, 'addition');
         },)
 })

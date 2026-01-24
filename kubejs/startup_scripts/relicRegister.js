@@ -1,26 +1,7 @@
-// priority: 10
-
-global.relics = [
-    global.relicExample,
-    global.relicBackpackSpace,
-    global.relicKnifeRed,
-    global.relicKnifeGreen,
-    global.relicKnifeBlue,
-    global.relicFuransuDoll,
-    global.relicHouraiDoll,
-    global.relicGoriaDoll,
-    global.relicKyotoDoll,
-    global.relicShanghaiDoll,
-    global.relicCoin,
-    global.relicBroomstick,
-    global.relicBattry,
-    global.relicLegStrap,
-    global.relicMagicThread
-]
+// priority: 11
 
 function RelicRegister() {
     this.relics = []
-
     /**
     * @param {Relic} relic
     */
@@ -35,62 +16,66 @@ function Relic() {
     this.name = ""
     this.nameZH = ""
     this.description = Text.gray("无效果")
-    this.specialDescription
+    this.specialDescription = null
     this.story = ""
     this.tags = []
     this.guideTexture = []
-    /**
-    * @param {Internal.SlotContext} slotContext
-    * @param {Internal.ItemStack} oldStack
-    * @param {Internal.ItemStack} newStack
-    */
-    this.onEquip = function(slotContext, oldStack, newStack) {
+    this.canEquip = function() { return true }
+    this.canUnEquip = function() { return true }
+    this.onLoad = function() {}
+    this.onDoDamage = function() {}
+    this.onEquip = function(slotContext, oldStack, newStack) {}
+    this.onUnEquip = function(slotContext, oldStack, newStack) {}
+    this.setOnEquip = function(onEquip) {
+        this.onEquip = onEquip
         return this
     }
-    /**
-    * @param {Internal.SlotContext} slotContext
-    * @param {Internal.ItemStack} oldStack
-    * @param {Internal.ItemStack} newStack
-    */
-    this.onUnEquip = function(slotContext, oldStack, newStack) {
+    this.setOnUnEquip = function(onUnEquip) {
+        this.onUnEquip = onUnEquip
         return this
     }
-    /**
-    * @param {Internal.LivingEntity} player
-    * @param {number} i
-    */
-    this.onLoad = function(player, index) {
+    this.setOnLoad = function(onLoad) {
+        this.onLoad = onLoad
         return this
     }
-    this.onDoDamage = function() {
+    this.setOnDoDamage = function(onDoDamage) {
+        this.onDoDamage = onDoDamage
         return this
     }
-    this.tags = function(tags) {
+    this.setTags = function(tags) {
         this.tags = tags
         return this
     }
-    this.guideTexture = function(textures) {
+    this.setGuideTexture = function(textures) {
         this.guideTexture = textures
         return this
     }
-    this.name = function(name) {
+    this.setName = function(name) {
         this.name = name
         return this
     }
-    this.nameZH = function(nameZH) {
+    this.setNameZH = function(nameZH) {
         this.nameZH = nameZH
         return this
     }
-    this.description = function(description) {
+    this.setDescription = function(description) {
         this.description = description
         return this
     }
-    this.specialDescription = function(specialDescription) {
+    this.setSpecialDescription = function(specialDescription) {
         this.specialDescription = specialDescription
         return this
     }
-    this.story = function(story) {
+    this.setStory = function(story) {
         this.story = story
+        return this
+    }
+    this.setCanEquip = function(canEquip) {
+        this.canEquip = canEquip
+        return this
+    }
+    this.setCanUnEquip = function(canUnEquip) {
+        this.canUnEquip = canUnEquip
         return this
     }
 }

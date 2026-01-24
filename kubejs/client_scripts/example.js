@@ -5,19 +5,20 @@ global.getRelicId = function(name) {
 ClientEvents.lang("zh_cn", (event) => {
     event.add("item.marguerite.dungeon_reward", "地牢奖励")
     event.add("item.marguerite.backpack_space", "背包空格")
-    for (let i = 0; i < global.relics.length; i ++) {
-        let relic = global.relics[i]
+    for (let i = 0; i < global.relicRegister.relics.length; i ++) {
+        let relic = global.relicRegister.relics[i]
         event.add("item.marguerite." + relic.name, relic.nameZH)
     }
 })
 
 
 ItemEvents.tooltip(event => {
+    let relics = global.relicRegister.relics
     event.addAdvanced('marguerite:dungeon_reward', (item, advanced, text) => {
         text.add(Text.red(`右键获取奖励`))
     })
-    for (let i = 0; i < global.relics.length; i ++) {
-        let relic = global.relics[i]
+    for (let i = 0; i < relics.length; i ++) {
+        let relic = relics[i]
         event.addAdvanced(global.getRelicId(relic.name), (item, advanced, text) => {
             if (relic.description != null) {
                 text.add(relic.description)
@@ -37,7 +38,10 @@ ItemEvents.tooltip(event => {
         event.addAdvanced(global.getRelicId(relic.name), (item, advanced, text) => {
             text.add(Text.darkGray("-----------------------"))
         })
+        console.log(relic.tags.length)
+        console.log("relic.tags.length")
         for (let j = 0; j < relic.tags.length; j ++) {
+            console.log(tag)
             let tag = relic.tags[j]
             switch (tag.color) {
                 case 'gray':

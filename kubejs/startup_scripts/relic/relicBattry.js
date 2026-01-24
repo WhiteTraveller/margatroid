@@ -2,19 +2,19 @@
 let curiosApi = Java.loadClass('top.theillusivec4.curios.api.CuriosApi');
 
 global.relicRegister.register(relic => {
-    relic.name("battry")
-        .nameZH("电池")
-        .description(Text.gray("护甲").append(Text.green("+1")))
-        .specialDescription(Text.gray("为九宫格范围内所有").append(Text.white("金属")).append(Text.gray("物品")).append(Text.green("+0.5")).append(Text.gray("伤害")))
-        .tags([global.margueriteTags.metal])
-        .guideTexture([
+    relic.setName("battry")
+        .setNameZH("电池")
+        .setDescription(Text.gray("护甲").append(Text.green("+1")))
+        .setSpecialDescription(Text.gray("为九宫格范围内所有").append(Text.white("金属")).append(Text.gray("物品")).append(Text.green("+0.5")).append(Text.gray("伤害")))
+        .setTags([global.margueriteTags.metal])
+        .setGuideTexture([
             Text.red("█").append(Text.red(" █")).append(Text.red(" █")).append(Text.red(" █")).append(Text.red(" █")),
             Text.red("█").append(Text.green(" █")).append(Text.green(" █")).append(Text.green(" █")).append(Text.red(" █")),
             Text.red("█").append(Text.green(" █")).append(Text.blue(" █")).append(Text.green(" █")).append(Text.red(" █")),
             Text.red("█").append(Text.green(" █")).append(Text.green(" █")).append(Text.green(" █")).append(Text.red(" █")),
             Text.red("█").append(Text.red(" █")).append(Text.red(" █")).append(Text.red(" █")).append(Text.red(" █")),
         ])
-        .onLoad((player, i) => {
+        .setOnLoad((player, i) => {
             // 获取九宫格范围内的物品槽
             // 获取Curios物品
             let curiosHelper = curiosApi.getCuriosHelper();
@@ -31,7 +31,7 @@ global.relicRegister.register(relic => {
                     }
                 });
             }
-            player.modifyAttribute('generic.armor', this.nameZH + i, 1, 'addition');
-            player.modifyAttribute('generic.attack_damage', this.nameZH + i, 0.5 * n, 'addition');
+            player.modifyAttribute('generic.armor', relic.nameZH + i, 1, 'addition');
+            player.modifyAttribute('generic.attack_damage', relic.nameZH + i, 0.5 * n, 'addition');
         },)
 })

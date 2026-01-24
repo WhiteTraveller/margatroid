@@ -2,12 +2,13 @@
 let curiosApi = Java.loadClass('top.theillusivec4.curios.api.CuriosApi');
 
 global.relicRegister.register(relic => {
-    relic.name("blue_knife")
-        .nameZH("蓝色小刀")
-        .description(Text.gray("伤害").append(Text.green("+1")).append(Text.gray("速度")).append(Text.green("+0.02")))
-        .specialDescription(Text.gray("你只能生效前").append(Text.white("2")).append(Text.gray("个小刀，因为你只有两只手")))
-        .tags([global.margueriteTags.metal, global.margueriteTags.knife])
-        .onLoad((player, index) => {
+    relic.setName("blue_knife")
+        .setNameZH("蓝色小刀")
+        .setDescription(Text.gray("伤害").append(Text.green("+1")).append(Text.gray("速度")).append(Text.green("+0.02")))
+        .setSpecialDescription(Text.gray("你只能生效前").append(Text.white("2")).append(Text.gray("个小刀，因为你只有两只手")))
+        .setTags([global.margueriteTags.metal, global.margueriteTags.knife])
+        .setOnLoad((player, index) => {
+            console.log("load" + relic.nameZH);
             // 获取Curios物品
             let curiosHelper = curiosApi.getCuriosHelper();
             let curiosAll = curiosHelper.getEquippedCurios(player).resolve().get();
@@ -43,7 +44,7 @@ global.relicRegister.register(relic => {
                 }
             }
 
-            player.modifyAttribute('generic.attack_damage', this.nameZH + index, 1, 'addition');
-            player.modifyAttribute('generic.movement_speed', this.nameZH + index, 0.02, 'addition');
+            player.modifyAttribute('generic.attack_damage', relic.nameZH + index, 1, 'addition');
+            player.modifyAttribute('generic.movement_speed', relic.nameZH + index, 0.02, 'addition');
         },)
 })

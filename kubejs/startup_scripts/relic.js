@@ -19,14 +19,18 @@ StartupEvents.registry('item', event => {
                     global.updatePlayerBackpack(slotContext.entity())
                     relic.onUnEquip(slotContext, oldStack, newStack)
                 })
-                .canEquip((slotContext, stack) => relic.canEquip ? relic.canEquip(slotContext, stack) : true)
-                .canUnequip((slotContext, stack) => relic.canUnEquip ? relic.canUnEquip(slotContext, stack) : true)
+                .canEquip((slotContext, stack) => relic.doCanEquip ? relic.canEquip(slotContext, stack) : true)
+                .canUnequip((slotContext, stack) => relic.doCanUnEquip ? relic.canUnEquip(slotContext, stack) : true)
         )
         .maxStackSize(1)
         .tag("curios:package")
         for (let j = 0; j < relic.tags.length; j ++) {
             let tag = relic.tags[j]
-            e.tag(tag.id)
+            if (tag) {
+                e.tag(tag.id)
+            } else {
+                console.warn("Relic tag is null: " + relic)
+            }
         }
     }
 })
