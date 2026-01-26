@@ -43,5 +43,15 @@ global.relicRegister.register(relic => {
             }
             player.modifyAttribute('generic.attack_damage', relic.nameZH + index, 1, 'addition');
             player.modifyAttribute('l2damagetracker:crit_rate', relic.nameZH + index, 0.05, 'addition');
-        },)
+        })
+        .setOnDoDamage((event, player, index) => {
+            // 触发效果：90% 概率造成 2 秒凋零（流血效果）
+            if (Math.random() < 0.9) {
+                event.entity.potionEffects.add('minecraft:wither', 40, 1);
+                // 播放红色粉尘粒子效果
+                event.level.spawnParticles('minecraft:dust 1 0 0 1', true, event.entity.x, event.entity.y + 1, event.entity.z, 0.2, 0.5, 0.2, 10, 0.05);
+                // 输出提示语
+                player.tell(Text.red(`${relic.nameZH}发挥了作用`));
+            }
+        })
 })
