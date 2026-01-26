@@ -42,8 +42,9 @@ global.updatePlayerBackpack = function (player) {
 }
   
 function allRelicEffect(player, name, i) {
-  for (let j = 0; j < global.relics.length; j++) {
-    let relic = global.relics[j];
+  let relics = global.relicRegister.relics;
+  for (let j = 0; j < relics.length; j++) {
+    let relic = relics[j];
     if (name == global.getRelicId(relic.name)) {
       relic.onLoad(player, i)
     }

@@ -1,30 +1,13 @@
 let curiosApi = Java.loadClass('top.theillusivec4.curios.api.CuriosApi');
 
-global.relics = [
-    global.relicExample,
-    global.relicBackpackSpace,
-    global.relicKnifeRed,
-    global.relicKnifeGreen,
-    global.relicKnifeBlue,
-    global.relicFuransuDoll,
-    global.relicHouraiDoll,
-    global.relicGoriaDoll,
-    global.relicKyotoDoll,
-    global.relicShanghaiDoll,
-    global.relicCoin,
-    global.relicBroomstick,
-    global.relicBattry,
-    global.relicLegStrap,
-    global.relicMagicThread
-]
-
 global.getRelicId = function(name) {
     return "marguerite:" + name
 }
 
 StartupEvents.registry('item', event => {
-    for (let i = 0; i < global.relics.length; i ++) {
-        let relic = global.relics[i]
+    let relics = global.relicRegister.relics
+    for (let i = 0; i < relics.length; i ++) {
+        let relic = relics[i]
         let e = event.create(global.getRelicId(relic.name))
         .attachCuriosCapability(
             CuriosJSCapabilityBuilder.create()
@@ -36,14 +19,18 @@ StartupEvents.registry('item', event => {
                     global.updatePlayerBackpack(slotContext.entity())
                     relic.onUnEquip(slotContext, oldStack, newStack)
                 })
-                .canEquip((slotContext, stack) => relic.canEquip ? relic.canEquip(slotContext, stack) : true)
-                .canUnequip((slotContext, stack) => relic.canUnEquip ? relic.canUnEquip(slotContext, stack) : true)
+                .canEquip((slotContext, stack) => relic.doCanEquip ? relic.canEquip(slotContext, stack) : true)
+                .canUnequip((slotContext, stack) => relic.doCanUnEquip ? relic.canUnEquip(slotContext, stack) : true)
         )
         .maxStackSize(1)
         .tag("curios:package")
         for (let j = 0; j < relic.tags.length; j ++) {
             let tag = relic.tags[j]
-            e.tag(tag.id)
+            if (tag) {
+                e.tag(tag.id)
+            } else {
+                console.warn("Relic tag is null: " + relic)
+            }
         }
     }
 })
