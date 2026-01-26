@@ -41,6 +41,15 @@ StartupEvents.registry("block", (event) => {
                 global.treasuraSpawner(entity);
             })
         });
+
+    event.create("marguerite:dungeon_gate")
+        .material('metal')
+        .hardness(5.0)
+        .resistance(10.0)
+        .displayName("地牢传送门")
+        .blockEntity((entityInfo) => {
+            // 启用 Block Entity 以支持 NBT 存储
+        });
 });
 
 
