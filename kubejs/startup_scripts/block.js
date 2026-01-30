@@ -1,4 +1,3 @@
-const $ServerPlayer = Java.loadClass("net.minecraft.server.level.ServerPlayer")
 
 StartupEvents.registry("block", (event) => {
     //event.create(方块id, 方块类型)
