@@ -20,6 +20,16 @@ global.margueriteTags = {
         id: "marguerite:tag_knife",
         nameZH: "小刀",
         color: "blue"
+    },
+    perform: {
+        id: "marguerite:tag_perform",
+        nameZH: "演奏",
+        color: "yellow"
+    },
+    mushroom: {
+        id: "marguerite:tag_mushroom",
+        nameZH: "蘑菇",
+        color: "blue"
     }
 }
 
