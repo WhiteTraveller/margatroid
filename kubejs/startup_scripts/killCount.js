@@ -8,14 +8,13 @@ ForgeEvents.onEvent('net.minecraftforge.event.entity.EntityTravelToDimensionEven
         let player = entity;
 
         // 将击杀数据写入玩家持久化数据
-        player.persistentData.putInt('killCount', kills);
+        player.persistentData.putInt('killCount', 0);
         player.persistentData.putBoolean('inDungeon', true);
 
         // 延迟执行消息提示（确保玩家完全加载）
         Utils.server.scheduleInTicks(0, () => {
-            let serverPlayer = Utils.server.getPlayer(uuid);
-            if (serverPlayer) {
-                serverPlayer.tell(`欢迎进入地牢！已记录你的击杀数: ${kills}`);
+            if (player) {
+                player.tell(`欢迎进入地牢！已记录你的击杀数: ${player.persistentData.getInt('killCount')}`);
             }
         });
     }
