@@ -43,11 +43,10 @@ EntityEvents.death(event => {
     // 检查是否是玩家
     if (entity.getType() === 'minecraft:player') {
         let player = entity;
-        let uuid = player.uuid;
 
         // 清零全局击杀计数器并刷新地牢状态
-        global.killCounter[uuid] = 0;
+        player.persistentData.putInt('killCount', 0);
         player.persistentData.putBoolean('inDungeon', false);
-        player.tell(`玩家 ${player.name} 死亡！击杀数已重置为0。`);
+        player.tell(`玩家 ${player.name.string} 死亡！击杀数已重置为0。`);
     }
 });
