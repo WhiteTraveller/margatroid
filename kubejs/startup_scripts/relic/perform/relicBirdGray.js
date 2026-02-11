@@ -4,7 +4,8 @@ let curiosApi = Java.loadClass('top.theillusivec4.curios.api.CuriosApi');
 global.relicRegister.register(relic => {
     relic.setName("gray_bird")
         .setNameZH("菇菇顾")
-        .setDescription(Text.gray("攻击速度").append(Text.green("-2")).append(Text.gray("(唯一生效)")))
+        .setDescription(Text.gray("攻击速度").append(Text.red("-2")).append(Text.gray("(唯一生效)")))
+        .setSpecialDescription(Text.gray("每击杀一个怪物，").append(Text.green("+0.05")).append(Text.gray("攻击速度，上限为12.5，整理遗物时会刷新效果")))
         .setStory("")
         .setTags([global.margueriteTags.perform])
         .setOnLoad((player, i) => {
@@ -26,5 +27,9 @@ global.relicRegister.register(relic => {
                     break;
                 }
             }
+
+            let kills = player.persistentData.getInt('killCount') || 0;
+            let speedKill = Math.min(kills * 0.05, 12.5);
+            player.modifyAttribute('generic.attack_speed', relic.nameZH + i + "2", speedKill, 'addition');
         },)
-})
+});
