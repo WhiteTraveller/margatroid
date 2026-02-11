@@ -27,7 +27,11 @@ global.relicRegister.register(relic => {
                     break;
                 }
             }
-
+            let kills = player.persistentData.getInt('killCount') || 0;
+            let speedKill = Math.min(kills * 0.05, 12.5);
+            player.modifyAttribute('generic.attack_speed', relic.nameZH + i + "2", speedKill, 'addition');
+        },)
+        .setOnKill((player, i) => {
             let kills = player.persistentData.getInt('killCount') || 0;
             let speedKill = Math.min(kills * 0.05, 12.5);
             player.modifyAttribute('generic.attack_speed', relic.nameZH + i + "2", speedKill, 'addition');
