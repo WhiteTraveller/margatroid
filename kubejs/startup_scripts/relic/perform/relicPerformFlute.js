@@ -23,15 +23,10 @@ global.relicRegister.register(relic => {
                     }
                 });
             }
-            let a = i + 9
-            let d = 1
-            while (a <= 53) {
-                if (curiosAll.getStackInSlot(a).getId() != "marguerite:pick")
-                    break;
-                else
-                    d=1.2;
-                    break;
+            let pickModify = 1;
+            if (curiosAll.getStackInSlot(i + 9).getId() == "marguerite:pick") {
+                pickModify = 1.2;
             }
-            player.modifyAttribute('generic.attack_damage', relic.nameZH + i, n*d, 'addition');
+            player.modifyAttribute('generic.attack_damage', relic.nameZH + i, n * pickModify, 'addition');
         },)
 })
