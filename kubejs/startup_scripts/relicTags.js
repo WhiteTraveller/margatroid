@@ -148,3 +148,15 @@ global.checkIfInBottom = function (center, rows, cols) {
     }
     return result;
 }
+
+global.confirmRelic = function (relicName, player) {
+    //遍历所有遗物找到对应id后返回true，否则返回false
+    let curiosHelper = curiosApi.getCuriosHelper();
+    let curiosAll = curiosHelper.getEquippedCurios(player).resolve().get();
+    for (let i = 0; i < 54; i++) {
+        if (curiosAll.getStackInSlot(i).getId() == relicName) {
+            return true;
+        }
+    }
+    return false;
+}
