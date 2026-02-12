@@ -1,10 +1,10 @@
 let curiosApi = Java.loadClass('top.theillusivec4.curios.api.CuriosApi');
 
 EntityEvents.death(event => {
-    const { source, entity } = event;
+    const { source } = event;
 
     // 确保攻击者是玩家且生物为地牢怪物
-    if (source.actual && source.actual.isPlayer()&& source.actual.level.dimension.toString().includes('dimdungeons:dungeon_dimension')) {
+    if (source.actual && source.actual.isPlayer() && source.actual.level.dimension.toString().includes('dimdungeons:dungeon_dimension')) {
         let player = source.actual;
 
         // 获取玩家装备的所有遗物
