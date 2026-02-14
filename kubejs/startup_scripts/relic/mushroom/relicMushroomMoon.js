@@ -11,41 +11,28 @@ global.relicRegister.register(relic => {
         .setStory("")
         .setTags([global.margueriteTags.mushroom])
         .setOnLoad((player, i) => {
-            let d = 1;
             let curiosHelper = curiosApi.getCuriosHelper();
             let curiosAll = curiosHelper.getEquippedCurios(player).resolve().get();
+            let farmModify = 1;
             let effectSlots = global.getNineGrid(i, 6, 9);
+            // 遍历影响范围内的槽位，检查是否存在蘑菇农场饰品以提升效果
             for (let slotIndex of effectSlots) {
                 let stack = curiosAll.getStackInSlot(slotIndex);
-                if (stack.isEmpty()) 
+                if (stack.isEmpty())
                     continue;
                 if (stack.getId() === "marguerite:mushroom_farm") {
-                    d = 1.2;
-                    break;
-                }
-            }  
-            player.modifyAttribute('generic.attack_damage', relic.nameZH + i, 0.15*d, 'addition');
-
-            player.modifyAttribute('generic.attack_speed', relic.nameZH + i, 0.5*d, 'addition');    
-            let r = false;
-            let g = false;
-            let b = false;
-            for (let i = 0; i < 54; i++) {
-                let item = curiosAll.getStackInSlot(i);
-                switch (item.getId()) {
-                    case "marguerite:red_mushroom":
-                        r = true;
-                    break;
-                    case "marguerite:green_mushroom":
-                        g = true;
-                    break;
-                    case "marguerite:blue_mushroom":
-                        b = true;
+                    farmModify = 1.2;
                     break;
                 }
             }
-            if(r == true && b == true && g == true){
-                player.modifyAttribute('generic.attack_speed', relic.nameZH + i, 0.5*d + 1, 'addition');
+            player.modifyAttribute('generic.attack_damage', relic.nameZH + i, 0.15 * farmModify, 'addition');
+            player.modifyAttribute('l2damagetracker:crit_damage', relic.nameZH + i, 0.15, 'addition');
+            player.modifyAttribute('generic.attack_speed', relic.nameZH + i, 0.5 * farmModify, 'addition');
+
+            if (global.confirmRelic("marguerite:red_mushroom", player) == true
+                && global.confirmRelic("marguerite:green_mushroom", player) == true
+                && global.confirmRelic("marguerite:blue_mushroom", player) == true) {
+                player.modifyAttribute('generic.attack_speed', relic.nameZH + i + " 2", 1, 'addition');
             }
         },)
 })

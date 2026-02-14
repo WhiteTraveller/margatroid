@@ -25,6 +25,7 @@ global.relicRegister.register(relic => {
                     }
                 });
             }
-            player.modifyAttribute('generic.armor', relic.nameZH + i, 2+0.5*n, 'addition');
+            player.modifyAttribute('generic.armor', relic.nameZH + i, 2 + 0.5 * n, 'addition');
+            player.modifyAttribute('l2damagetracker:damage_reduction', relic.nameZH + i, -0.08, 'addition');
         },)
 })

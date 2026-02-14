@@ -10,6 +10,13 @@ global.relicRegister.register(relic => {
         .setSpecialDescription(Text.gray("周围的").append(Text.blue("蘑菇")).append(Text.gray("效果")).append(Text.green("+20%")))
         .setStory("")
         .setTags([global.margueriteTags.mushroom])
+        .setGuideTexture([
+            Text.red("█").append(Text.red(" █")).append(Text.red(" █")).append(Text.red(" █")).append(Text.red(" █")),
+            Text.red("█").append(Text.green(" █")).append(Text.green(" █")).append(Text.green(" █")).append(Text.red(" █")),
+            Text.red("█").append(Text.green(" █")).append(Text.blue(" █")).append(Text.green(" █")).append(Text.red(" █")),
+            Text.red("█").append(Text.green(" █")).append(Text.green(" █")).append(Text.green(" █")).append(Text.red(" █")),
+            Text.red("█").append(Text.red(" █")).append(Text.red(" █")).append(Text.red(" █")).append(Text.red(" █")),
+        ])
         .setOnLoad((player, i) => {
             player.modifyAttribute('generic.attack_damage', relic.nameZH + i, 0.3, 'addition');
             player.modifyAttribute('generic.armor', relic.nameZH + i, 1, 'addition');

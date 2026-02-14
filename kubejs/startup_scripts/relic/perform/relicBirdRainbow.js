@@ -11,15 +11,10 @@ global.relicRegister.register(relic => {
         .setOnLoad((player, i) => {
             let curiosHelper = curiosApi.getCuriosHelper();
             let curiosAll = curiosHelper.getEquippedCurios(player).resolve().get();
-            let n = i + 9;
-            let d = 1
-            while (n <= 53) {
-                if (curiosAll.getStackInSlot(n).getId() != "marguerite:pick")
-                    break;
-                else
-                    d=1.2;
-                    break;
+            let pickModify = 1
+            if (curiosAll.getStackInSlot(i + 9).getId() == "marguerite:pick"){
+                pickModify = 1.2;
             }
-            player.modifyAttribute('generic.luck', relic.nameZH + i, 25*d, 'addition');
+            player.modifyAttribute('generic.luck', relic.nameZH + i, 25 * pickModify, 'addition');
         },)
 })

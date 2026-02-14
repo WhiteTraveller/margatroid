@@ -18,6 +18,8 @@ BlockEvents.rightClicked('marguerite:dungeon_gate', event => {
         return;
     }
 
+    //if(!player)
+
     let count;
     let isNew = false;
 

@@ -92,6 +92,11 @@ function Relic() {
     this.onDoDamage = function() {}
     this.onEquip = function(slotContext, oldStack, newStack) {}
     this.onUnEquip = function(slotContext, oldStack, newStack) {}
+    this.onKill = function() {}
+    this.setOnKill = function(onKill) {
+        this.onKill = onKill
+        return this
+    }
     this.setOnEquip = function(onEquip) {
         this.onEquip = onEquip
         return this
