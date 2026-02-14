@@ -88,11 +88,11 @@ BlockEvents.rightClicked('minecraft:pink_concrete', event => {
 
     let player = event.getPlayer()
     if (player == null) return
-    z = 0
     let nextZ
     let sessionNum = getSessionKey(x)
     let nextX = sessionNum * 1024 + 512
-    let nextY = y + 10
+    let nextY = y
+    let nextFloorZ = z + 512  // 下一层的z坐标
     let roomType = "marguerite:start_32"
 
     let directions = ["none", "clockwise_90", "180", "counterclockwise_90"]
@@ -103,7 +103,8 @@ BlockEvents.rightClicked('minecraft:pink_concrete', event => {
         refreshPosition(x, event)
 
         let server = event.server;
-        let generator = new DungeonGenerator(6, 5, sessionNum * 1024 + 512, 12, y);
+        // 生成下一层地图，使用z+512作为基准
+        let generator = new DungeonGenerator(6, 5, sessionNum * 1024 + 512, nextFloorZ, nextY);
         generator.generateAndPrint();
 
         setDungeonMapData(x, generator.serializeMap(), server);
@@ -119,30 +120,34 @@ BlockEvents.rightClicked('minecraft:pink_concrete', event => {
 
         let rotation = exitsArray.length > 0 ? exitsArray[0] : 0;
 
-
+        // 根据房间旋转计算下一房间的z坐标
         if (rotation == 0) {
-            nextZ = z
+            nextZ = nextFloorZ
             nextX = sessionNum * 1024 + 512
             direction = directions[0]
         }
         else if (rotation == 1) {
-            nextZ = z
+            nextZ = nextFloorZ
             nextX = sessionNum * 1024 + 512 + 31
             direction = directions[1]
         }
         else if (rotation == 2) {
-            nextZ = z + 31
+            nextZ = nextFloorZ + 31
             nextX = sessionNum * 1024 + 512 + 31
             direction = directions[2]
         }
         else if (rotation == 3) {
-            nextZ = z + 31
+            nextZ = nextFloorZ + 31
             nextX = sessionNum * 1024 + 512
             direction = directions[3]
         }
 
-        player.teleportTo('dimdungeons:dungeon_dimension', sessionNum * 1024 + 512 + 16, nextY + 10, 16, 0, 0)
-        level.runCommand(`execute in dimdungeons:dungeon_dimension run place template ${roomType} ${nextX} ${nextY} ${nextZ} ${direction}`)
+        // 先传送玩家到下一层
+        player.teleportTo('dimdungeons:dungeon_dimension', nextX-16, nextY + 10, nextFloorZ + 16, 0, 0)
+        // 延迟执行放置命令，确保区块已加载
+        server.scheduleInTicks(6, () => {
+            level.runCommand(`execute in dimdungeons:dungeon_dimension run place template ${roomType} ${nextX} ${nextY} ${nextZ} ${direction}`)
+        });
     }
 })
 
@@ -211,6 +216,11 @@ function placeRoomAt(event, x, y, z, rooms) {
     map.printMapCompact()
 
     let nextRoom = map.map[nextRoomXY.z][nextRoomXY.x]
+    // 保护性检查：如果房间为null，跳过mirror计算
+    if (!nextRoom) {
+        console.error("错误：房间坐标 (" + nextRoomXY.x + ", " + nextRoomXY.z + ") 没有找到房间");
+        return;
+    }
     let mirror = map.needMirrorRoom(nextRoom.x, nextRoom.y, directionNum) ? mirrors[1] : mirrors[0]
     switch (directionNum) {
         case 0:
