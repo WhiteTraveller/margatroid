@@ -2,13 +2,9 @@ global.spawnMob = function (level, x, y, z) {
     let floors = ["l1", "l2", "l3", "l4", "l5", "l6"];
     let floor = (getCurrentFloor(x, level.getServer()) - 1) % 6;
     if (floor < 0 || floor > floors.length) {
-        console.log("Invalid floor number: " + floor + ", defaulting to 0");
         floor = 0;
     }
-    console.log("Spawning mobs for floor: " + floor);
     let mobPool = global.mobPool[floors[floor]];
-    console.log("Spawning mobs for floor: " + floors[floor]);
-    console.log("Spawning mobs for floor: " + mobPool);
     let mobGroup = global.getRandomItemFromArray(mobPool.groups);
     let mobs = mobGroup.mobs;
     let server = level.getServer();

@@ -36,7 +36,7 @@ BlockEvents.rightClicked('marguerite:dungeon_gate', event => {
     let level = server.getLevel('dimdungeons:dungeon_dimension');
     let directions = ["none", "clockwise_90", "180", "counterclockwise_90"]
     let direction
-    let roomType = "marguerite:start_32"
+    let roomType = "marguerite:l1_start_1"
     
     let x = count * 1024 + 512
     let y = 12
@@ -84,7 +84,7 @@ BlockEvents.rightClicked('marguerite:dungeon_gate', event => {
     }
 
     // 传送玩家（关键步骤：必须先传送以载入区块）
-    player.teleportTo('dimdungeons:dungeon_dimension', count * 1024 + 16 + 512, 22, 16, 0, 0)
+    player.teleportTo('dimdungeons:dungeon_dimension', count * 1024 + 16 + 512, 30, 16, 0, 0)
     
     // 发放基础物资
     player.give("minecraft:wooden_sword")

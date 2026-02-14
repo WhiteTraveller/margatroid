@@ -15,7 +15,7 @@ global.relicRegister.register(relic => {
             Text.red("█").append(Text.red(" █")).append(Text.red(" █")).append(Text.red(" █")).append(Text.red(" █")),
         ])
         .setOnLoad((player, index) => {
-            player.modifyAttribute('generic.armor', relic.nameZH + index, 2, 'addition');
+            player.modifyAttribute('generic.attack_damage', relic.nameZH + index, 2, 'addition');
             player.modifyAttribute('generic.movement_speed', relic.nameZH + index, -0.01, 'addition');
         },)
 })

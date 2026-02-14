@@ -49,6 +49,16 @@ StartupEvents.registry("block", (event) => {
         .blockEntity((entityInfo) => {
             // 启用 Block Entity 以支持 NBT 存储
         });
+
+    event.create("meng:test_shop_spanwer")
+        .woodSoundType()
+        .unbreakable()
+        .displayName("地牢商店生成器")
+        .blockEntity((entityInfo) => {
+            entityInfo.serverTick(1, 0, (entity) => {
+                global.shopSpawner(entity);
+            })
+        });
 });
 
 

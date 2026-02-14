@@ -1,26 +1,22 @@
 global.roomPool = {
     "l1": {
-        "threeway": [
-            { "weight": 6, "name": "room:l1_threeway_1" },
-            { "weight": 3, "name": "room:l1_threeway_2" },
-            { "weight": 1, "name": "room:l1_threeway_store" },
+        "three": [
+            { "weight": 6, "name": "marguerite:l1_three_1" },
+            { "weight": 4, "name": "marguerite:l1_three_2" },
         ],
-        "fourway": [
-            { "weight": 6, "name": "room:l1_fourway_1" },
-            { "weight": 4, "name": "room:l1_fourway_2" },
-        ],
-        "hailway": [
-            { "weight": 6, "name": "room:l1_hailway_1" },
-            { "weight": 4, "name": "room:l1_hailway_2" },
+        "boss": [
+            { "weight": 6, "name": "marguerite:l1_boss_1" },
         ],
         "end": [
-            { "weight": 8, "name": "room:l1_end_1" },
-            { "weight": 2, "name": "room:l1_end_3" },
+            { "weight": 6, "name": "marguerite:l1_end_1" },
         ],
         "corner": [
-            { "weight": 6, "name": "room:l1_corner_1" },
-            { "weight": 4, "name": "room:l1_corner_2" },
+            { "weight": 6, "name": "marguerite:l1_corner_1" },
         ],
+        "direct": [
+            { "weight": 6, "name": "marguerite:l1_direct_1" },
+            { "weight": 6, "name": "marguerite:l1_direct_2" }
+        ]
     }
 }
 

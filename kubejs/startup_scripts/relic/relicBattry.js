@@ -31,7 +31,18 @@ global.relicRegister.register(relic => {
                     }
                 });
             }
+
             player.modifyAttribute('generic.armor', relic.nameZH + i, 1, 'addition');
             player.modifyAttribute('generic.attack_damage', relic.nameZH + i, 0.5 * n, 'addition');
         },)
 })
+
+global.addAttribute = (attributes, player) => {
+    attributes = {
+        "generic.armor" : { value: 1 + 1, operation: "addition", uuid: relic.nameZH + i },
+    }
+    
+    for (let attribute of attributes) {
+        player.modifyAttribute(attribute.name, attribute.uuid, attribute.value, attribute.operation);
+    }
+}

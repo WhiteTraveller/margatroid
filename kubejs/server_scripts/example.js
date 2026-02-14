@@ -22,12 +22,21 @@ global.mobSpawner = function (entity) {
         let x = entity.block.x
         let y = entity.block.y
         let z = entity.block.z
-        global.spawnMob(level, x, y, z, 1)
-
+        global.spawnMob(level, x, y, z)
         entity.block.set("meng:test_treasure_spanwer")
     }
 }
 
 global.chestSpawner = function (entity) {
     entity.block.set("minecraft:chest")
+}
+
+global.shopSpawner = function (entity) {
+    let level = entity.getLevel();
+    if (level.getDimension() == 'dimdungeons:dungeon_dimension') {
+        let x = entity.block.x
+        let y = entity.block.y
+        let z = entity.block.z
+        global.spawnMob(level, x, y, z)
+    }
 }

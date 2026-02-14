@@ -24,6 +24,7 @@ global.relicRegister.register(relic => {
             }
         })
         .setCanUnEquip((slotContext, stack) => {
+            console.log("can unequip")
             var player1 = slotContext.entity();
             player1.getLevel().getPlayers()
             if (player1.isPlayer()) {
@@ -38,5 +39,5 @@ global.relicRegister.register(relic => {
                 }
             }
             return false
-        })
+        }).setPool(global.relicPool.space)
 })

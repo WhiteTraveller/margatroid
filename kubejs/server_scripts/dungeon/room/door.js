@@ -1,54 +1,14 @@
 // 开门进入下一个房间
 BlockEvents.rightClicked('minecraft:lime_concrete', event => {
-    let level = event.getLevel();
-    let { x, y, z } = event.block
-    if (level.getEntitiesWithin(AABB.of(x + 128, y + 128, z + 128, x - 128, y - 128, z - 128)).filter(e => e.getTags().contains("dungeon_mob")).length == 0) {
-    } else {
-        event.server.runCommand(`title ${event.player.getUsername()} title "你没有清除全部怪物！"`)
-        return
-    }
-
-    let player = event.getPlayer()
-    if (player == null) return
-
-    let rooms = ["marguerite:direct_32", "marguerite:corner_32", "marguerite:three_32", "marguerite:boss_32", "marguerite:special_32"]
-    let bossRooms = ["marguerite:boss_32"]
-    let specialRooms = ["margatroid:test_special"]
-    if (level.getDimension() == 'dimdungeons:dungeon_dimension') {
-        if (getCurrentPosition(x, event.server) > global.roomCount[(getCurrentFloor(x, event.server) - 1) % 6]["count"]) {
-            placeRoomAt(event, x, y, z, bossRooms)
-        }
-        else {
-            placeRoomAt(event, x, y, z, rooms)
-            updatePosition(x, event)
-        }
-        removeDoor(x, y, z, level)
-        console.log("placed next room")
-    }
+    generateNextRoom(event)
 })
 
 // 开门进入下一个房间
 BlockEvents.rightClicked('minecraft:blue_concrete', event => {
-    // let level = event.getLevel();
-    // let { x, y, z } = event.block
-    // if (level.getEntitiesWithin(AABB.of(x + 128, y + 128, z + 128, x - 128, y - 128, z - 128)).filter(e => e.getTags().contains("dungeon_mob")).length == 0) {
-    // } else {
-    //     event.server.runCommand(`title ${event.player.getUsername()} title "你没有清除全部怪物！"`)
-    //     return
-    // }
+    generateNextRoom(event)
+})
 
-    // let player = event.getPlayer()
-    // if (player == null) return
-
-    // let rooms = ["marguerite:direct_32", "marguerite:three_32"]
-    // let bossRooms = ["marguerite:boss_32"]
-    // let specialRooms = ["marguerite:special_32"]
-    // if (level.getDimension() == 'dimdungeons:dungeon_dimension') {
-    //     placeRoomAt(event, x, y, z, specialRooms)
-    //     removeDoor(x, y, z, level)
-    //     console.log("placed next room")
-    // }
-
+function generateNextRoom(event) {
     let level = event.getLevel();
     let { x, y, z } = event.block
     if (level.getEntitiesWithin(AABB.of(x + 128, y + 128, z + 128, x - 128, y - 128, z - 128)).filter(e => e.getTags().contains("dungeon_mob")).length == 0) {
@@ -60,21 +20,12 @@ BlockEvents.rightClicked('minecraft:blue_concrete', event => {
     let player = event.getPlayer()
     if (player == null) return
 
-    let rooms = ["marguerite:direct_32", "marguerite:corner_32", "marguerite:three_32", "marguerite:boss_32", "marguerite:special_32"]
-    let bossRooms = ["marguerite:boss_32"]
-    let specialRooms = ["margatroid:test_special"]
     if (level.getDimension() == 'dimdungeons:dungeon_dimension') {
-        if (getCurrentPosition(x, event.server) > global.roomCount[(getCurrentFloor(x, event.server) - 1) % 6]["count"]) {
-            placeRoomAt(event, x, y, z, bossRooms)
-        }
-        else {
-            placeRoomAt(event, x, y, z, rooms)
-            updatePosition(x, event)
-        }
+        placeRoomAt(event, x, y, z)
         removeDoor(x, y, z, level)
         console.log("placed next room")
     }
-})
+}
 
 // 进入下一层
 BlockEvents.rightClicked('minecraft:pink_concrete', event => {
@@ -146,13 +97,12 @@ BlockEvents.rightClicked('minecraft:pink_concrete', event => {
     }
 })
 
-function placeRoomAt(event, x, y, z, rooms) {
+function placeRoomAt(event, x, y, z) {
     let level = event.getLevel()
 
     let map = new DungeonGenerator(10, 6)
     map.deserializeMap(getDungeonMapData(x, event.server))
-    let roomType = global.getRandomItemFromArray(rooms)
-
+    let roomType = "marguerite:start_32"
     let directions = ["none", "clockwise_90", "180", "counterclockwise_90"]
     let mirrors = ["none", "front_back"]
     let directionNum = 0
@@ -160,44 +110,37 @@ function placeRoomAt(event, x, y, z, rooms) {
 
     let nextZ = z - 33
     let nextX = x - 16
-    let nextY = y - 10
+    let nextY = 12
 
     if (level.getBlock(x, y, z - 1).getId() == "minecraft:red_concrete") {
         nextZ = z - 33
         nextX = x - 16
-        nextY = y - 10
         directionNum = 0
-        direction = directions[directionNum]
         if (mirror == "front_back") nextX += 31
         if (level.getBlock(x + 1, y, z).getId() == "minecraft:black_concrete") nextX += 1
     }
     else if (level.getBlock(x, y, z + 1).getId() == "minecraft:red_concrete") {
         nextZ = z + 33
         nextX = x + 16
-        nextY = y - 10
         directionNum = 2
-        direction = directions[directionNum]
         if (mirror == "front_back") nextX -= 31
         if (level.getBlock(x - 1, y, z).getId() == "minecraft:black_concrete") nextX -= 1
     }
     else if (level.getBlock(x - 1, y, z).getId() == "minecraft:red_concrete") {
         nextZ = z + 16
         nextX = x - 33
-        nextY = y - 10
         directionNum = 3
-        direction = directions[directionNum]
         if (mirror == "front_back") nextZ -= 31
         if (level.getBlock(x, y, z - 1).getId() == "minecraft:black_concrete") nextZ -= 1
     }
     else if (level.getBlock(x + 1, y, z).getId() == "minecraft:red_concrete") {
         nextZ = z - 16
         nextX = x + 33
-        nextY = y - 10
         directionNum = 1
-        direction = directions[directionNum]
         if (mirror == "front_back") nextZ += 31
         if (level.getBlock(x, y, z + 1).getId() == "minecraft:black_concrete") nextZ += 1
     }
+    direction = directions[directionNum]
 
     // 打印所有相关信息
     console.log("map levelX: " + map.levelX + ", levelZ: " + map.levelZ, map.serializeMap())
@@ -233,25 +176,20 @@ function placeRoomAt(event, x, y, z, rooms) {
 
     if (nextRoom) {
         if (nextRoom.type == RoomType.CORNER) {
-            roomType = "marguerite:corner_32"
+            roomType = global.getWeightedRandomItem("l1", "corner")
         } else if (nextRoom.type == RoomType.T_JUNCTION) {
-            roomType = "marguerite:three_32"
+            roomType = global.getWeightedRandomItem("l1", "three")
         } else if (nextRoom.type == RoomType.END) {
-            roomType = "marguerite:boss_32"
+            roomType = global.getWeightedRandomItem("l1", "end")
         } else if (nextRoom.type == RoomType.STRAIGHT) {
-            roomType = "marguerite:direct_32"
+            roomType = global.getWeightedRandomItem("l1", "direct")
         } else if (nextRoom.type == RoomType.DEAD_END) {
-            roomType = "marguerite:special_32"
+            roomType = global.getWeightedRandomItem("l1", "end")
         }
     }
 
-
     level.runCommand(`execute in dimdungeons:dungeon_dimension run place template ${roomType} ${nextX} ${nextY} ${nextZ} ${direction} ${mirror}`)
     console.log("Placing room: " + roomType + " at " + x + ", " + y + ", " + z + " with direction " + direction + " and mirror " + mirror)
-}
-
-function placeStartRoomAt(event, roomType, x, y, z) {
-    event.server.runCommand(`execute in dimdungeons:dungeon_dimension run place template ${roomType} ${x} ${y} ${z - 1}`)
 }
 
 function updatePosition(x, event) {
@@ -290,17 +228,3 @@ function removeDoor(x, y, z, level) {
         }
     }
 }
-
-
-BlockEvents.rightClicked('minecraft:sea_lantern', event => {
-    let level = event.getLevel();
-    if (event.hand == "OFF_HAND") return
-    let player = event.getPlayer()
-    if (player == null) return
-    if (level.getDimension() == 'dimdungeons:dungeon_dimension') {
-        event.player.give({ count: 1, nbt: { level: 0, room_left: 10, can_tp: 0, HideFlags: 1, px: 0 }, item: "test:dream_matter" })
-        event.block.set("minecraft:air")
-    }
-
-    global.spawnMob(level, x, y, z, event.getItem())
-})
